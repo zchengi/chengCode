@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li>
+            <!--图片-->
+            <div class="img" style="background-image: url('images/1.jpg')"></div>
+            <!--遮罩-->
+            <div class="shadow"><h2>园林酒店</h2></div>
+        </li>
+        <li>
+            <div class="img" style="background-image: url('images/2.jpg')"></div>
+            <div class="shadow"><h2>情侣酒店</h2></div>
+        </li>
+        <li>
+            <div class="img" style="background-image: url('images/3.jpg')"></div>
+            <div class="shadow"><h2>设计师酒店</h2></div>
+        </li>
+        <li>
+            <div class="img" style="background-image: url('images/4.jpg')"></div>
+            <div class="shadow"><h2>青年旅馆</h2></div>
+        </li>
+        <li>
+            <div class="img" style="background-image: url('images/5.jpg')"></div>
+            <div class="shadow"><h2>特色客栈</h2></div>
+        </li>
+        <li>
+            <div class="img" style="background-image: url('images/6.jpg')"></div>
+            <div class="shadow"><h2>海岛酒店</h2></div>
+        </li>
+        <li>
+            <div class="img" style="background-image: url('images/7.jpg')"></div>
+            <div class="shadow"><h2>海外温泉</h2></div>
+        </li>
+    </ul>
+
+</div>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+    //alert($);
+    $("#box ul li").hover(function () {//鼠标悬停事件
+        $(this).stop().animate({"width": "400px"}, 200, function () {
+            $(this).css({
+                "border-left": "1px solid #fff",
+                "border-right": "1px solid #fff"
+            });
+        });
+        $(this).siblings().stop().animate({"width": "101px"}, 200);
+        $(this).find(".shadow").hide();
+    }, function () {//鼠标移出
+        $("#box ul li").stop().animate({"width": "144px"}, 200).css("border", "0");
+        $(this).find(".shadow").show();
+    });
+</script>
+</body>
+</html>
