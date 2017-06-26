@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+ 
+	<!-- 扫描service包下所有使用注解的类型 -->
+	<context:component-scan base-package="com.cheng.*.service" />
+	<context:component-scan base-package="com.cheng.*.serviceImpl" />
+	<!-- 配置事务管理器 --> 
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 注入数据库连接池 -->
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!--配置基于XML的事务管理 -->
+	<!--增强 -->
+	<tx:advice transaction-manager="transactionManager" id="advice1">
+		<!-- 注入所有请求方法 propagation事务处理级别 -->
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!--配置切入点和切面 -->
+	<aop:config>
+		<!-- 切入点 -->
+		<aop:pointcut expression="execution(* com.cheng.*.service.*.*(..))"
+			id="cut1" />
+		<!-- 切面事务归txAdvice处理 -->
+		<aop:advisor advice-ref="advice1" pointcut-ref="cut1" />
+	</aop:config>
+	<!-- aop二次代理导致错误 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+</beans>
