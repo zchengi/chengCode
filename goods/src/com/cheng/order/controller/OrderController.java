@@ -23,7 +23,7 @@ public class OrderController {
 	@RequestMapping(value = "/dindan", method = RequestMethod.POST)
 	public String dindan(String[] ids, myOrder dindan, Model model) {
 
-		myOrder dindan2 = orderServiceImpl.dindan(ids, dindan);
+		myOrder dindan2 = orderServiceImpl.addDindan(ids, dindan);
 		model.addAttribute("dindan", dindan2);
 		return "jsps/order/ordersucc";
 	}

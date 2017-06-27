@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderitemMapper orderitemMapper;
 
-	public myOrder dindan(String[] ids, myOrder dindan) {
+	public myOrder addDindan(String[] ids, myOrder dindan) {
 
 		dindan.setOid(UUIDHelper.getUUID());
 		Date date = new Date();
@@ -52,9 +52,12 @@ public class OrderServiceImpl implements OrderService {
 			orderitem.setOrderitemid(UUIDHelper.getUUID());
 			orderitem.setQuantity(cartItempovo.getCartItem().getQuantity());
 			orderitem.setSubtotal(new BigDecimal(cartItempovo.getSubTotal()));
-
+			
+			cartItemDao.deleteByPrimaryKey(cartitemid);
 			orderitemMapper.insert(orderitem);
 		}
+		
+		//删除已经提交订单的购物车列表
 
 		return dindan;
 	}
