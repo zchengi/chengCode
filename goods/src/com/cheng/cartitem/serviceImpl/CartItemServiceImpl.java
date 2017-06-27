@@ -1,6 +1,8 @@
 package com.cheng.cartitem.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,16 +33,23 @@ public class CartItemServiceImpl implements CartItemService {
 		cartItemDao.updateByPrimaryKeySelective(newcartItem);
 	}
 
-	public List<CartItempovo> addCartitem(CartItem newcartItem,String uid) {
+	public List<CartItempovo> addCartitem(CartItem newcartItem, String uid) {
 		newcartItem.setCartitemid(UUIDHelper.getUUID());
-		List<CartItem> list=cartItemDao.selectHavacartItem(newcartItem);
-		if (list==null||list.size()==0) {
+		List<CartItem> list = cartItemDao.selectHavacartItem(newcartItem);
+		if (list == null || list.size() == 0) {
 			cartItemDao.insert(newcartItem);
-		}else {
+		} else {
 			CartItem cartItem = list.get(0);
-			cartItem.setQuantity(newcartItem.getQuantity()+cartItem.getQuantity());
+			cartItem.setQuantity(newcartItem.getQuantity()
+					+ cartItem.getQuantity());
 			cartItemDao.updateByPrimaryKey(cartItem);
 		}
 		return cartItemDao.selectCartIempovoByUid(uid);
+	}
+
+	public void deleteCartitems(String[] ids) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("ids", ids);
+		cartItemDao.deleteCartitems(map);
 	}
 }

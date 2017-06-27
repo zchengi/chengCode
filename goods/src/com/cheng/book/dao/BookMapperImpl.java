@@ -61,7 +61,7 @@ public class BookMapperImpl implements BookMapper {
 
 	@Override
 	public List<Book> selectForBooks(Book book) {
-		return this.selectForBooks(book);
+		return this.bookMapper.selectForBooks(book);
 	}
 
 	@Override

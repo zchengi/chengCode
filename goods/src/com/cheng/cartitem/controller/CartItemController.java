@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,12 +46,22 @@ public class CartItemController {
 	}
 
 	/**
+	 * 批量删除购物车
+	 */
+	@RequestMapping(value = "/deletecartitems", method = RequestMethod.GET)
+	public String deleteCartitems(String[] ids, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		cartItemServiceImpl.deleteCartitems(ids);
+
+		return "redirect:/cartitem/getcartitems/" + user.getUid();
+	}
+
+	/**
 	 * 修改购物车
 	 */
-	@RequestMapping(value = "/editcartitem")
-	public String editCartitem(CartItem newcartItem, HttpSession session) {
+	@RequestMapping(value = "/editcartitem/{cartitemid}",method=RequestMethod.POST)
+	public String editCartitem(@RequestBody CartItem newcartItem, HttpSession session) {
 		cartItemServiceImpl.editCartitem(newcartItem);
-
 		User user = (User) session.getAttribute("user");
 		return "redirect:/cartitem/getcartitems/" + user.getUid();
 	}
@@ -63,7 +74,8 @@ public class CartItemController {
 			Model model) {
 		User user = (User) session.getAttribute("user");
 		newcartItem.setUid(user.getUid());
-		List<CartItempovo> povos = cartItemServiceImpl.addCartitem(newcartItem,user.getUid());
+		List<CartItempovo> povos = cartItemServiceImpl.addCartitem(newcartItem,
+				user.getUid());
 		model.addAttribute("cartItems", povos);
 		return "jsps/cart/list";
 	}

@@ -14,4 +14,6 @@ public interface CartItemService {
 	void editCartitem(CartItem newcartItem);
 	
 	List<CartItempovo> addCartitem(CartItem newcartItem,String uid);
+	
+	void deleteCartitems(String[] ids);
 }
