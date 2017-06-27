@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="user_*" class="com.zy.action.UserAction" method="{1}">
+			<!-- 登录结果集 -->
+			<result name="loginSUCCESS">/login/success.jsp</result>
+			<result name="loginINPUT">/login/error.jsp</result>
+
+			<!-- 注册结果集 -->
+			<result name="registSUCCESS">/regist/success.jsp</result>
+			<result name="registINPUT">/regist/regist.jsp</result>
+
+			<!-- 显示结果集 -->
+			<result name="listSUCCESS">/list/list.jsp</result>
+
+			<!-- 删除结果集 ,删除成功后直接重定向到user_list.action -->
+			<result name="deleteSUCCESS" type="redirectAction">user_list.action</result>
+
+			<!-- 编辑前回显结果集 -->
+			<result name="editviewSUCCESS">/edit/edit.jsp</result>
+
+			<!-- 编辑后回显结果集 -->
+			<result name="editSUCCESS" type="redirectAction">user_list.action</result>
+		</action>
+	</package>
+
+</struts>
