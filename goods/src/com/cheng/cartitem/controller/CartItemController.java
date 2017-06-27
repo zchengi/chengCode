@@ -1,5 +1,6 @@
 package com.cheng.cartitem.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -59,8 +60,9 @@ public class CartItemController {
 	/**
 	 * 修改购物车
 	 */
-	@RequestMapping(value = "/editcartitem/{cartitemid}",method=RequestMethod.POST)
-	public String editCartitem(@RequestBody CartItem newcartItem, HttpSession session) {
+	@RequestMapping(value = "/editcartitem/{cartitemid}", method = RequestMethod.POST)
+	public String editCartitem(@RequestBody CartItem newcartItem,
+			HttpSession session) {
 		cartItemServiceImpl.editCartitem(newcartItem);
 		User user = (User) session.getAttribute("user");
 		return "redirect:/cartitem/getcartitems/" + user.getUid();
@@ -69,7 +71,7 @@ public class CartItemController {
 	/**
 	 * 添加购物车
 	 */
-	@RequestMapping(value = "/addcartitem", method = RequestMethod.POST)
+	@RequestMapping(value = "/addcartitem")
 	public String addCartitem(CartItem newcartItem, HttpSession session,
 			Model model) {
 		User user = (User) session.getAttribute("user");
@@ -78,5 +80,34 @@ public class CartItemController {
 				user.getUid());
 		model.addAttribute("cartItems", povos);
 		return "jsps/cart/list";
+	}
+
+	/**
+	 * 结算1
+	 */
+	@RequestMapping(value = "/accounts", method = RequestMethod.POST)
+	public String accounts(String[] ids, Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		
+		List<CartItempovo> povos = cartItemServiceImpl.selectAccounts(ids,
+				user.getUid());
+		model.addAttribute("ids", ids);
+		model.addAttribute("cartItems", povos);
+		return "jsps/cart/showitem";
+	}
+
+	/**
+	 * 结算2 使用
+	 */
+	@RequestMapping(value = "/accounts2", method = RequestMethod.POST)
+	public String accounts2(@RequestBody String[] ids, Model model,
+			HttpSession session) {
+		User user = (User) session.getAttribute("user");
+
+		List<CartItempovo> povos = cartItemServiceImpl.selectAccounts(ids,
+				user.getUid());
+		model.addAttribute("ids", Arrays.toString(ids));
+		model.addAttribute("cartItems", povos);
+		return "jsps/cart/showitem";
 	}
 }

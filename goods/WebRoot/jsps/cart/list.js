@@ -7,7 +7,6 @@ $(function() {
 	// 全选按钮
 	$("#selectAll").click(function() {
 		$(":checkbox[name=checkboxBtn]").each(function() {
-			console.log($("#selectAll").attr("checked"));
 			if ($("#selectAll").attr("checked")) {
 				$(this).attr("checked", true);
 			} else {
@@ -25,51 +24,99 @@ $(function() {
 		total();
 	});
 
-	//减一商品
-	$(".jian").click(function(){
-		var value=Number($("#"+$(this).attr("jianid")+"quantity").val());
-		if(value==1){
-			if(confirm("您确定删除该条目吗？")){
-				location.href = "/goods/cartitem/removecartitem/"+$(this).attr("jianid");
-			}
-		}else{
-			$("#"+$(this).attr("jianid")+"quantity").val(value-1);
-			var quantity = Number($("#"+$(this).attr("jianid")+"quantity").val());
-			var currprice = Number($("#"+$(this).attr("jianid")+"currprice").text());
-			var   subtotal  = round( quantity *  currprice,2);
-			$("#"+$(this).attr("jianid")+"Total").text(subtotal);
-			$.ajax({
-					cache: false,
-					async: false,
-					type: "POST",
-					dataType: "json",
+	// 减一商品
+	$(".jian")
+			.click(
+					function() {
+						var value = Number($(
+								"#" + $(this).attr("jianid") + "quantity")
+								.val());
+						if (value == 1) {
+							if (confirm("您确定删除该条目吗？")) {
+								location.href = "/goods/cartitem/removecartitem/"
+										+ $(this).attr("jianid");
+							}
+						} else {
+							$("#" + $(this).attr("jianid") + "quantity").val(
+									value - 1);
+							var quantity = Number($(
+									"#" + $(this).attr("jianid") + "quantity")
+									.val());
+							var currprice = Number($(
+									"#" + $(this).attr("jianid") + "currprice")
+									.text());
+							var subtotal = round(quantity * currprice, 2);
+							$("#" + $(this).attr("jianid") + "Total").text(
+									subtotal);
+							$.ajax({
+								cache : false,
+								async : false,
+								type : "POST",
+								dataType : "json",
+								contentType : "application/json;charset=utf-8",
+								data : JSON.stringify({
+									'quantity' : quantity,
+									'cartitemid' : $(this).attr("jianid")
+								}),
+								url : "/goods/cartitem/editcartitem/"
+										+ $(this).attr("jianid"),
+							});
+						}
+						total();
+					});
+	// 加一商品
+	$(".jia").click(
+			function() {
+				var value = Number($("#" + $(this).attr("jianid") + "quantity")
+						.val());
+				$("#" + $(this).attr("jianid") + "quantity").val(value + 1);
+				var quantity = Number($(
+						"#" + $(this).attr("jianid") + "quantity").val());
+				var currprice = Number($(
+						"#" + $(this).attr("jianid") + "currprice").text());
+				var subtotal = round(quantity * currprice, 2);
+				$("#" + $(this).attr("jianid") + "Total").text(subtotal);
+				$.ajax({
+					cache : false,
+					async : false,
+					type : "POST",
+					dataType : "json",
 					contentType : "application/json;charset=utf-8",
-					data: JSON.stringify({'quantity' : quantity,'cartitemid':$(this).attr("jianid")}),
-					url: "/goods/cartitem/editcartitem/"+$(this).attr("jianid"),
+					data : JSON.stringify({
+						'quantity' : quantity,
+						'cartitemid' : $(this).attr("jianid")
+					}),
+					url : "/goods/cartitem/editcartitem/"
+							+ $(this).attr("jianid")
 				});
-			}
-			total();
-		});
-	//加一商品
-	$(".jia").click(function(){
-		var  value  = Number($("#"+$(this).attr("jianid")+"quantity").val());
-		$("#"+$(this).attr("jianid")+"quantity").val(value+1);
-		var  quantity  =Number($("#"+$(this).attr("jianid")+"quantity").val());
-		var  currprice  =Number($("#"+$(this).attr("jianid")+"currprice").text());
-		var   subtotal  = round( quantity *  currprice,2);
-		$("#"+$(this).attr("jianid")+"Total").text(subtotal);
-		$.ajax({
-			cache: false,
-			async: false,
-			type: "POST",
-			dataType: "json",
-			contentType : "application/json;charset=utf-8", 
-			data: JSON.stringify({'quantity' : quantity,'cartitemid':$(this).attr("jianid")}),
-			url: "/goods/cartitem/editcartitem/"+$(this).attr("jianid")
-		});
-		total();
-	});
+				total();
+			});
 });
+
+/**
+ * 结算功能
+ */
+function accounts() {
+	var ids = new Array();
+	$(":checkbox[name=checkboxBtn][checked=true]").each(function() {
+		ids.push($(this).attr("id"));
+	});
+	// 数组转换为字符串
+	// ids=ids.join(",");
+
+	// 用form表单提交
+	$("#ids").attr("value", ids);
+	$("#form1").submit();
+
+	// console.log(ids);
+	// console.log(JSON.stringify(ids));
+	/*
+	 * $.ajax({ cache : false, async : false, type : "POST", dataType : "json",
+	 * contentType : "application/json;charset=utf-8", data :
+	 * JSON.stringify(ids), url : "/goods/cartitem/accounts2", });
+	 */
+
+}
 
 /**
  * 批量删除
@@ -80,7 +127,7 @@ function deleteAll(path) {
 		$(":checkbox[name=checkboxBtn][checked=true]").each(function() {
 			ids.push($(this).attr("id"));
 		});
-		location.href = path+"/cartitem/deletecartitems?ids=" + ids;
+		location.href = path + "/cartitem/deletecartitems?ids=" + ids;
 		return true;
 	} else {
 		return false;

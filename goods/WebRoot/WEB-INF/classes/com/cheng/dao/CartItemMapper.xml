@@ -4,12 +4,47 @@
 
 	<delete id="deleteCartitems" parameterType="map">
 		delete from cartitem where cartitem.cartitemid in(
-		<foreach collection="ids" item="id" separator="," index="index">
+		<foreach collection="ids" item="id" separator=",">
 			#{id}
 		</foreach>
 		)
 	</delete>
 
+	<select id="selectCartIempovoByCartitemid" parameterType="string"
+		resultMap="povo">
+		SELECT
+		book.*, cartitem.*, cartitem.bid cartitem_bid,
+		cartitem.shunxu cartitem_shunxu
+		FROM
+		book,
+		cartitem
+		WHERE
+		cartitem.bid =
+		book.bid
+		AND cartitem.cartItemId = #{cartiemid}
+	</select>
+
+	<select id="selectAccounts" parameterType="map" resultMap="povo">
+		SELECT
+		book.*, cartitem.*, cartitem.bid cartitem_bid,
+		cartitem.shunxu
+		cartitem_shunxu,
+		`user`.*, `user`.uid user_uid
+		FROM
+		book,
+		cartitem,
+		`user`
+		WHERE
+		cartitem.uid = `user`.uid
+		AND cartitem.bid = book.bid
+		AND
+		`user`.uid = #{uid}
+		AND cartitem.cartItemId IN (
+		<foreach collection="ids" item="id" separator=",">
+			#{id}
+		</foreach>
+		)
+	</select>
 
 
 	<resultMap type="com.cheng.cartitem.povo.CartItempovo" id="povo"

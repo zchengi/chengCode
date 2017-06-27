@@ -91,13 +91,12 @@
 				</tr>
 				<tr>
 					<td colspan="7" align="right">
-						<a href="<c:url value='/jsps/cart/showitem.jsp'/>" id="jiesuan" class="jiesuan"></a>
+						<a href="javascript:accounts();" id="jiesuan" class="jiesuan"></a>
 					</td>
 				</tr>
 			</table>
-			<form id="form1" action="<c:url value='/jsps/cart/showitem.jsp'/>" method="post">
-				<input type="hidden" name="cartItemIds" id="cartItemIds" />
-				<input type="hidden" name="method" value="loadCartItems" />
+			<form id="form1" action="<c:url value="/cartitem/accounts"/>" method="post">
+				<input type="hidden" name="ids" id="ids"/>
 			</form>
 		</c:otherwise>
 	</c:choose>

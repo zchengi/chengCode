@@ -16,4 +16,6 @@ public interface CartItemService {
 	List<CartItempovo> addCartitem(CartItem newcartItem,String uid);
 	
 	void deleteCartitems(String[] ids);
+	
+	List<CartItempovo> selectAccounts(String[] ids, String uid);
 }

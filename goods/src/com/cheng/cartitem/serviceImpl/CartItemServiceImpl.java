@@ -52,4 +52,11 @@ public class CartItemServiceImpl implements CartItemService {
 		map.put("ids", ids);
 		cartItemDao.deleteCartitems(map);
 	}
+
+	public List<CartItempovo> selectAccounts(String[] ids, String uid) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("ids", ids);
+		map.put("uid", uid);
+		return cartItemDao.selectAccounts(map);
+	}
 }
