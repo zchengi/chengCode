@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
@@ -29,14 +29,14 @@ $(function() {
   
   <body>
 <div class="divContent">
-	<span class="spanPrice">֧����</span><span class="price_t">&yen;203.5</span>
-	<span class="spanOid">��ţ�E3A1EB6D0543489F9729B2B5BC5DB365</span>
+	<span class="spanPrice">支付金额：</span><span class="price_t">&yen;203.5</span>
+	<span class="spanOid">编号：E3A1EB6D0543489F9729B2B5BC5DB365</span>
 </div>
 <form action="<c:url value='/OrderServlet'/>" method="post" id="form1" target="_top">
 <input type="hidden" name="method" value=""/>
 <input type="hidden" name="oid" value=""/>
 <div class="divBank">
-	<div class="divText">ѡ����������</div>
+	<div class="divText">选择网上银行</div>
 	<div style="margin-left: 20px;">
 	  <div style="margin-bottom: 20px;">
 		<input id="ICBC-NET-B2C" type="radio" name="yh" value="ICBC-NET-B2C" checked="checked"/>
@@ -118,7 +118,7 @@ $(function() {
 	  </div>
 	</div>
 	<div style="margin: 40px;">
-		<a href="javascript:alert('֧���ɹ���');" class="linkNext">��һ��</a>
+		<a href="javascript:alert('支付成功！');" class="linkNext">下一步</a>
 	</div>
 </div>
 </form>

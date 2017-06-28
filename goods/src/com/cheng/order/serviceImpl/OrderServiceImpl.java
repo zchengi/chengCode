@@ -3,7 +3,9 @@ package com.cheng.order.serviceImpl;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,14 +33,14 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderitemMapper orderitemMapper;
 
-	public myOrder addDindan(String[] ids, myOrder dindan) {
+	public myOrder adddingdan(String[] ids, myOrder dingdan) {
 
-		dindan.setOid(UUIDHelper.getUUID());
+		dingdan.setOid(UUIDHelper.getUUID());
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		dindan.setOrdertime(sdf.format(date));
-		dindan.setStatus(1);
-		myOrderDao.insert(dindan);
+		dingdan.setOrdertime(sdf.format(date));
+		dingdan.setStatus(1);
+		myOrderDao.insert(dingdan);
 
 		for (String cartitemid : ids) {
 			Orderitem orderitem = new Orderitem();
@@ -48,21 +50,39 @@ public class OrderServiceImpl implements OrderService {
 			orderitem.setBname(cartItempovo.getBname());
 			orderitem.setCurrprice(cartItempovo.getCurrprice());
 			orderitem.setImageB(cartItempovo.getImageB());
-			orderitem.setOid(dindan.getOid());
+			orderitem.setOid(dingdan.getOid());
 			orderitem.setOrderitemid(UUIDHelper.getUUID());
 			orderitem.setQuantity(cartItempovo.getCartItem().getQuantity());
 			orderitem.setSubtotal(new BigDecimal(cartItempovo.getSubTotal()));
-			
+			// 删除已经提交订单的购物车列表
 			cartItemDao.deleteByPrimaryKey(cartitemid);
+
+			// 添加订单
 			orderitemMapper.insert(orderitem);
 		}
-		
-		//删除已经提交订单的购物车列表
 
-		return dindan;
+		return dingdan;
 	}
 
-	public List<DingdanPovo> getDindans(String uid) {
+	public List<DingdanPovo> getdingdans(String uid) {
 		return myOrderDao.selectdingdanbyuid(uid);
+	}
+
+	public DingdanPovo getDingdan(String oid) {
+		return myOrderDao.selectByOid(oid);
+	}
+
+	public void affirmDingdan(String oid) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("oid", oid);	
+		map.put("status",4);	
+		myOrderDao.updateDindans(map);
+	}
+
+	public void cancelDingdan(String oid) {
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("oid", oid);	
+		map.put("status",5);	
+		myOrderDao.updateDindans(map);
 	}
 }

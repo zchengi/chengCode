@@ -47,7 +47,7 @@ a:hover {
 			会员：${sessionScope.user.loginname},欢迎登录！&nbsp;&nbsp;|&nbsp;&nbsp; 
 			<a href="<c:url value='/cartitem/getcartitems/${sessionScope.user.uid}'/>" target="body"> 
 				我的购物车</a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-			<a href="<c:url value='/order/getdindans/${sessionScope.user.uid}'/>" target="body">
+			<a href="<c:url value='/order/getdingdans/${sessionScope.user.uid}'/>" target="body">
 				我的订单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a href="<c:url value='/jsps/user/pwd.jsp'/>" target="body">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 			<a href="<c:url value='/jsps/user/login.jsp'/>" target="_parent" id="exit">退出</a>

@@ -24,12 +24,12 @@
 		<span style="margin-left: 50px;margin-right: 50px;">操作</span>
 	</div><br/>
 	<table align="center" border="0" width="100%" cellpadding="0" cellspacing="0">	
-		<c:forEach items="${dindans}" var="dindan">
+		<c:forEach items="${dingdans}" var="dingdan">
 		<tr class="tt">
 			<td width="320px">
-				订单号：<a  href="<c:url value='/jsps/order/desc.jsp'/>">${dindan.oid}</a>
+				订单号：<a  href="<c:url value='/order/getdingdan/${dingdan.oid}'/>">${dingdan.oid}</a>
 			</td>
-			<td width="200px">下单时间：${dindan.ordertime}</td>
+			<td width="200px">下单时间：${dingdan.ordertime}</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
@@ -38,27 +38,24 @@
 		 
 		<tr style="padding-top: 10px; padding-bottom: 10px;">
 			<td colspan="2">
-			<c:forEach items="${dindan.orderitems}" var="orderitem">
-				<a class="link2" href="<c:url value='/book/selectbybid/${orderitem.bid}'/>">
-	  				<img border="0" width="70" src="<c:url value='/${orderitem.imageB}'/>"/>
+			<c:forEach items="${dingdan.orderitems}" var="orderitem">
+				<a class="link2" href="<c:url value='/book/selectbybid/${orderitem.bid}' />">
+	  				<img border="0" width="70" src="<c:url value='/${orderitem.imageB}' />"/>
 				</a>
 			</c:forEach>
 			</td>
 			
-			
 			<td width="115px">
-				<span class="price_t">&yen;${dindan.total}</span>
+				<span class="price_t">&yen;${dingdan.total}</span>
 			</td>
 			<td width="142px">
 				<c:choose>
-					<c:when test="${dindan.status eq  1 }">(等待付款)</c:when>
-					<c:when test="${dindan.status eq  2 }">(准备发货)</c:when>
-					<c:when test="${dindan.status eq  3 }">(等待确认)</c:when>
-					<c:when test="${dindan.status eq  4 }">(交易成功)</c:when>
-					<c:when test="${dindan.status eq  5 }">(已取消)</c:when>
+					<c:when test="${dingdan.status eq  1 }">(等待付款)</c:when>
+					<c:when test="${dingdan.status eq  2 }">(准备发货)</c:when>
+					<c:when test="${dingdan.status eq  3 }">(等待确认)</c:when>
+					<c:when test="${dingdan.status eq  4 }">(交易成功)</c:when>
+					<c:when test="${dingdan.status eq  5 }">(已取消)</c:when>
 				</c:choose>
-				
-				
 <!-- 
 			(准备发货)
 			(等待确认)
@@ -67,15 +64,15 @@
 -->
 			</td>
 			<td>
-				<a href="<c:url value='/jsps/order/desc.jsp'/>">查看</a><br/>
-				<c:if test="${dindan.status eq 1 }">
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">支付</a><br/>
+				<a href="<c:url value='/order/getdingdan/${dingdan.oid}'/>">查看</a><br/>
+				<c:if test="${dingdan.status eq 1}">
+					<a href="<c:url value='/order/getdingdan/${dingdan.oid}'/>">支付</a><br/>
+					<a href="<c:url value='/order/cancel/${dingdan.oid}'/>"
+						onclick="javascript:return confirm('您确定要取消订单吗？');">取消</a><br/>						
 				</c:if>	
-				<c:if test="${dindan.status eq 1 }">
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">取消</a><br/>						
-				</c:if>	
-				<c:if test="${dindan.status eq 3 }">
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">确认收货</a><br/>
+				<c:if test="${dingdan.status eq 3}">
+					<a href="<c:url value='/order/affirm/${dingdan.oid}'/>"
+						onclick="javascript:return confirm('您确定要确认订单吗？');">确认收货</a><br/>
 				</c:if>	
 			</td>
 		</tr>

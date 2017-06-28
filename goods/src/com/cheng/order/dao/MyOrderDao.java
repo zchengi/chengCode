@@ -1,6 +1,7 @@
 package com.cheng.order.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,7 @@ public class MyOrderDao implements myOrderMapper {
 
 	@Autowired
 	private myOrderMapper myOrderMapper;
-	
+
 	@Override
 	public int countByExample(myOrderExample example) {
 		// TODO Auto-generated method stub
@@ -83,6 +84,16 @@ public class MyOrderDao implements myOrderMapper {
 
 	public List<DingdanPovo> selectdingdanbyuid(String uid) {
 		return this.myOrderMapper.selectdingdanbyuid(uid);
+	}
+
+	@Override
+	public DingdanPovo selectByOid(String oid) {
+		return this.myOrderMapper.selectByOid(oid);
+	}
+
+	@Override
+	public void updateDindans(Map<String, Object> map) {
+		this.myOrderMapper.updateDindans(map);
 	}
 
 }

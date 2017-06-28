@@ -15,6 +15,32 @@
 		</collection>
 	</resultMap>
 
+	<update id="updateDindans" parameterType="map">
+		UPDATE myorder SET
+		`status`=#{status} WHERE myorder.oid=#{oid}
+	</update>
+
+	<select id="selectByOid" parameterType="string" resultMap="dingdanpovo">
+		SELECT
+		myorder.*,
+		orderitem.bid,
+		orderitem.bname,
+		orderitem.currPrice,
+		orderitem.image_b,
+		orderitem.oid orderitem_oid,
+		orderitem.orderItemId,
+		orderitem.quantity,
+		orderitem.subtotal
+		FROM
+		myorder,orderitem
+		WHERE
+		orderitem.oid=myorder.oid
+		AND
+		orderitem.oid=myorder.oid
+		AND
+		myorder.oid=#{oid}
+	</select>
+
 	<select id="selectdingdanbyuid" parameterType="string"
 		resultMap="dingdanpovo">
 		SELECT myOrder.* ,

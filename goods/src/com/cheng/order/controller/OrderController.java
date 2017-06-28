@@ -20,18 +20,52 @@ public class OrderController {
 	@Autowired
 	private OrderServiceImpl orderServiceImpl;
 
-	@RequestMapping(value = "/dindan", method = RequestMethod.POST)
-	public String dindan(String[] ids, myOrder dindan, Model model) {
+	@RequestMapping(value = "/dingdan", method = RequestMethod.POST)
+	public String dingdan(String[] ids, myOrder dingdan, Model model) {
 
-		myOrder dindan2 = orderServiceImpl.addDindan(ids, dindan);
-		model.addAttribute("dindan", dindan2);
+		myOrder dingdan2 = orderServiceImpl.adddingdan(ids, dingdan);
+		model.addAttribute("dingdan", dingdan2);
 		return "jsps/order/ordersucc";
 	}
 
-	@RequestMapping(value = "/getdindans/{uid}", method = RequestMethod.GET)
-	public String getDindans(@PathVariable String uid, Model model) {
-		List<DingdanPovo> dindans = orderServiceImpl.getDindans(uid);
-		model.addAttribute("dindans", dindans);
+	@RequestMapping(value = "/getdingdans/{uid}", method = RequestMethod.GET)
+	public String getdingdans(@PathVariable String uid, Model model) {
+		List<DingdanPovo> dingdans = orderServiceImpl.getdingdans(uid);
+		model.addAttribute("dingdans", dingdans);
 		return "jsps/order/list";
+	}
+
+	@RequestMapping(value = "/getdingdan/{oid}", method = RequestMethod.GET)
+	public String getDingdan(@PathVariable String oid, Model model) {
+		DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
+		model.addAttribute("dingdan", dingdan);
+		return "jsps/order/desc";
+	}
+
+	// 确认
+	@RequestMapping(value = "/affirm/{oid}", method = RequestMethod.GET)
+	public String affirmDingdan(@PathVariable String oid, Model model) {
+		orderServiceImpl.affirmDingdan(oid);
+
+		model.addAttribute("code", "success");
+		model.addAttribute("msg", "订单已确认");
+		return "jsps/msg";
+	}
+
+	// 取消
+	@RequestMapping(value = "/cancel/{oid}", method = RequestMethod.GET)
+	public String cancelDingdan(@PathVariable String oid, Model model) {
+		orderServiceImpl.cancelDingdan(oid);
+
+		model.addAttribute("code", "success");
+		model.addAttribute("msg", "订单已取消");
+		return "jsps/msg";
+	}
+	// 将要支付
+	@RequestMapping(value = "/payying/{oid}", method = RequestMethod.GET)
+	public String payyingDingdan(@PathVariable String oid, Model model) {
+		DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
+		model.addAttribute("dingdan", dingdan);
+		return "jsps/order/desc";
 	}
 }

@@ -26,14 +26,14 @@
 	<img src="<c:url value='/images/duihao.jpg'/>" class="img"/>
 	<dl>
 		<dt>订单编号</dt>
-		<dd>${dindan.oid}</dd>
+		<dd>${dingdan.oid}</dd>
 		<dt>合计金额</dt>
-		<dd><span class="price_t">&yen;${dindan.total}</span></dd>
+		<dd><span class="price_t">&yen;${dingdan.total}</span></dd>
 		<dt>收货地址</dt>
-		<dd>${dindan.address}</dd>
+		<dd>${dingdan.address}</dd>
 	</dl>
 	<span>感谢您的支持，祝您购物愉快！</span>
-	<a href="<c:url value='/jsps/order/pay.jsp'/>" id="linkPay">支付</a>
+	<a href="<c:url value='/order/payying/${dingdan.oid}'/>" id="linkPay">支付</a>
 </div>
   </body>
 </html>

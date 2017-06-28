@@ -7,6 +7,13 @@ import com.cheng.order.povo.DingdanPovo;
 
 public interface OrderService {
 	
-	myOrder addDindan(String[] ids, myOrder order);
-	List<DingdanPovo> getDindans(String uid);
+	myOrder adddingdan(String[] ids, myOrder order);
+	
+	List<DingdanPovo> getdingdans(String uid);
+	
+	DingdanPovo getDingdan(String oid);
+	
+	void affirmDingdan(String oid);
+	
+	void cancelDingdan(String oid);
 }

@@ -40,19 +40,19 @@
 		$("#total").text(round(total, 2));
 	});
 	function tijiao(){
-		$("#dindantotal").attr("value",$("#total").text());
+		$("#dingdantotal").attr("value",$("#total").text());
 		$("#form1").submit();
 	}
 </script>
 </head>
 
 <body>
-	<form id="form1" action="<c:url value='/order/dindan'/>" method="post">
+	<form id="form1" action="<c:url value='/order/dingdan'/>" method="post">
 		<%-- <input type="hidden" name="ids" value="${ids}" /> --%>
 		<c:forEach  items="${ids}"  var="id">
 			<input type="hidden" name="ids" value="${id}"/>
 		</c:forEach>	
-		<input type="hidden" name="total" id="dindantotal" />
+		<input type="hidden" name="total" id="dingdantotal" />
 		<input type="hidden" name="uid" value="${sessionScope.user.uid}" />
 		<table width="95%" align="center" cellpadding="0" cellspacing="0">
 			<tr bgcolor="#efeae5">
