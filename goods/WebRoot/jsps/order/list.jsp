@@ -66,7 +66,7 @@
 			<td>
 				<a href="<c:url value='/order/getdingdan/${dingdan.oid}'/>">查看</a><br/>
 				<c:if test="${dingdan.status eq 1}">
-					<a href="<c:url value='/order/getdingdan/${dingdan.oid}'/>">支付</a><br/>
+					<a href="<c:url value='/order/payying/${dingdan.oid}'/>">支付</a><br/>
 					<a href="<c:url value='/order/cancel/${dingdan.oid}'/>"
 						onclick="javascript:return confirm('您确定要取消订单吗？');">取消</a><br/>						
 				</c:if>	

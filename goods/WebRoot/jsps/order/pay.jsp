@@ -12,9 +12,6 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/order/pay.css'/>">
 	<script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 
@@ -29,8 +26,8 @@ $(function() {
   
   <body>
 <div class="divContent">
-	<span class="spanPrice">支付金额：</span><span class="price_t">&yen;203.5</span>
-	<span class="spanOid">编号：E3A1EB6D0543489F9729B2B5BC5DB365</span>
+	<span class="spanPrice">支付金额：</span><span class="price_t">&yen;${dingdan.total}</span>
+	<span class="spanOid">编号：${dingdan.oid}</span>
 </div>
 <form action="<c:url value='/OrderServlet'/>" method="post" id="form1" target="_top">
 <input type="hidden" name="method" value=""/>
@@ -118,7 +115,7 @@ $(function() {
 	  </div>
 	</div>
 	<div style="margin: 40px;">
-		<a href="javascript:alert('支付成功！');" class="linkNext">下一步</a>
+		<a href="<c:url value='/order/pay/${dingdan.oid}'/>" target="_black" class="linkNext">下一步</a>
 	</div>
 </div>
 </form>

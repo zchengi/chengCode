@@ -16,4 +16,6 @@ public interface OrderService {
 	void affirmDingdan(String oid);
 	
 	void cancelDingdan(String oid);
+	
+	String payDingdan(String oid);
 }
