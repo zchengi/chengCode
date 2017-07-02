@@ -63,7 +63,6 @@
 								<td class="td"><span>&yen;${orderitem.subtotal}</span></td>
 							</tr>
 						</c:forEach>
-						
 					</table>
 				</dd>
 			</dl>

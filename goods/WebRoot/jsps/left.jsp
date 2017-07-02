@@ -13,15 +13,13 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/css.css'/>">
-<script type="text/javascript"
-	src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/css.css'/>">
+<link rel="stylesheet" href="<c:url value='/menu/mymenu.css'/>" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/left.css'/>">
+
+<script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/menu/mymenu.js'/>"></script>
-<link rel="stylesheet" href="<c:url value='/menu/mymenu.css'/>"
-	type="text/css" media="all">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/jsps/css/left.css'/>">
 <script language="javascript">
 	var bar = new Q6MenuBar("bar", "网上书城");
 	$(function() {
@@ -31,8 +29,7 @@
 
 		<c:forEach items="${categorys}" var="category">
 		<c:forEach items="${category.children}" var="child">
-		bar.add("${category.cname}","${child.cname}",
-				"/goods/book/pagehelper?cid=${child.cid}", "body");
+		bar.add("${category.cname}","${child.cname}", "/goods/book/pagehelper?cid=${child.cid}", "body");
 		</c:forEach>
 		</c:forEach>
 

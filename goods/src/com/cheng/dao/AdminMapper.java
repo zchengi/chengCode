@@ -2,7 +2,9 @@ package com.cheng.dao;
 
 import com.cheng.domain.Admin;
 import com.cheng.domain.AdminExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface AdminMapper {

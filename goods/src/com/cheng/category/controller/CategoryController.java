@@ -27,5 +27,4 @@ public class CategoryController {
 		return "jsps/left";
 	}
 
-
 }

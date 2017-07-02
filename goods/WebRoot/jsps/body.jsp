@@ -16,8 +16,7 @@
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/css.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/css.css'/>">
 <style type="text/css">
 a {
 	text-decoration: none;

@@ -26,7 +26,7 @@ public class AlipayConfig {
 	// 对应APPID下的支付宝公钥。
 	public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsl3EFfp6qXGHQxh9zVt5eyFnSXjct4qfeC4wwKJdUPyUwJXW7afBAfwCYMhI66nIxxcWQe2bTzB73ESFB9sWnIFQa6lljY7IwZ8kZqPjUYFYl+SX/4nbO18Q/amf84Uk5YXZNYRzjnf7A/FN+xK48pdAgAy5QGBPFKzhIMeIjqreTXPgKUkAfDlkQeObm1ME41mOtg6OllYJ6NFC4N9gAz8f9+J4kFnD3kI67DZ+5Ie69cAorsKQZDwwDrdYbz5mWNeJrDQib6D5sojFTTQhP0YmnxfIPACoZkaLJJX4po9gDzha8+HexbeAnrdsYcGDvz9CuSPLWAhSwvl3DbjOLwIDAQAB";
 	// 服务器异步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://chengi.u1.luyouxia.net:58772/alipay.trade.page.pay-JAVA-UTF-8/notify_url.jsp";
+	public static String notify_url = "http://zyi.u1.luyouxia.net:58772/alipay.trade.page.pay-JAVA-UTF-8/notify_url.jsp";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
 	public static String return_url = "http://localhost:8080/goods/order/returnurl";

@@ -72,7 +72,7 @@ public class Test1 {
 		} catch (Exception e) {
 		}
 	}
-	
+
 	@Test
 	public void test3() {
 		BigDecimal bigDecimal = new BigDecimal(1);

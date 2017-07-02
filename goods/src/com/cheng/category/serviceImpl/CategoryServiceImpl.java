@@ -23,5 +23,4 @@ public class CategoryServiceImpl implements ICategorService {
 		return categoryMapperImpl.selectAllcategorys();
 	}
 
-	
 }

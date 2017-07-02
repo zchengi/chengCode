@@ -15,6 +15,6 @@ public class UserPwdVo extends User {
 
 	@Override
 	public String toString() {
-		return super.toString()+"  UserPwdVo [newpass=" + newpass + "]";
+		return super.toString() + "  UserPwdVo [newpass=" + newpass + "]";
 	}
 }

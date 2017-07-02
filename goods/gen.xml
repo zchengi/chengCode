@@ -15,19 +15,19 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.cheng.domain"
+		<javaModelGenerator targetPackage="com.zy.domain"
 			targetProject="./src">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.cheng.dao"
+		<sqlMapGenerator targetPackage="com.zy.dao"
 			targetProject="./cfg">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.cheng.dao" targetProject="./src">
+			targetPackage="com.zy.dao" targetProject="./src">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 

@@ -31,7 +31,10 @@
 	    <ul>
 	    	<li>商品编号：${book.bid}</li>
 	    	<li>价格：<span class="price_n">&yen;${book.currprice }</span></li>
-	    	<li>定价：<span class="spanPrice">&yen;${book.price }</span>　折扣：<span style="color: #c30;">${book.discount }</span>折</li>
+	    	<li>定价：
+	    		<span class="spanPrice">&yen;${book.price }</span>
+	    	　	折扣：<span style="color: #c30;">${book.discount }</span>折
+	    	</li>
 	    </ul>
 		<hr class="hr1"/>
 		<table>

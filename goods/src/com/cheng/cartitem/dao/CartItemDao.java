@@ -28,6 +28,7 @@ public class CartItemDao implements CartItemMapper {
 				.selectCartIempovoByUid(uid);
 		return selectCartIempovoByUid;
 	}
+
 	public CartItempovo selectCartIempovoByCartitemid(String cartiemid) {
 		CartItempovo selectCartIempovoByUid = cartItemMapper
 				.selectCartIempovoByCartitemid(cartiemid);
@@ -90,7 +91,7 @@ public class CartItemDao implements CartItemMapper {
 	}
 
 	@Override
-	public void deleteCartitems(Map<String,Object> ids) {
+	public void deleteCartitems(Map<String, Object> ids) {
 		this.cartItemMapper.deleteCartitems(ids);
 	}
 

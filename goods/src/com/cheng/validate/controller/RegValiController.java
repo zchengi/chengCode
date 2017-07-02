@@ -54,7 +54,7 @@ public class RegValiController {
 	 * 验证邮箱
 	 */
 	@RequestMapping(value = "/valiemail", method = RequestMethod.POST)
-	public @ResponseBody Boolean valiemail( String email) {
+	public @ResponseBody Boolean valiemail(String email) {
 		System.out.println(email);
 		boolean b = validateService.valiemail(email);
 		return b;

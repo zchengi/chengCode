@@ -10,12 +10,12 @@ public interface CartItemService {
 	List<CartItempovo> getCartIems(String uid);
 
 	void removeCartitem(String cartitemid);
-	
+
 	void editCartitem(CartItem newcartItem);
-	
-	List<CartItempovo> addCartitem(CartItem newcartItem,String uid);
-	
+
+	List<CartItempovo> addCartitem(CartItem newcartItem, String uid);
+
 	void deleteCartitems(String[] ids);
-	
+
 	List<CartItempovo> selectAccounts(String[] ids, String uid);
 }

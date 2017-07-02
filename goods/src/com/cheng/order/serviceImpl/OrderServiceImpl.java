@@ -77,21 +77,21 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	public void affirmDingdan(String oid) {
-		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("oid", oid);	
-		map.put("status",4);	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("oid", oid);
+		map.put("status", 4);
 		myOrderDao.updateDindans(map);
 	}
 
 	public void cancelDingdan(String oid) {
-		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("oid", oid);	
-		map.put("status",5);	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("oid", oid);
+		map.put("status", 5);
 		myOrderDao.updateDindans(map);
 	}
 
 	public String payDingdan(String oid) {
-		DingdanPovo dingdan =myOrderDao.selectByOid(oid);
+		DingdanPovo dingdan = myOrderDao.selectByOid(oid);
 
 		// 获得初始化的AlipayClient
 		AlipayClient alipayClient = new DefaultAlipayClient(
@@ -126,12 +126,12 @@ public class OrderServiceImpl implements OrderService {
 				+ "\"subject\":\"" + subject + "\"," + "\"body\":\"" + body
 				+ "\"," + "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
 
-		String result=null;
+		String result = null;
 		try {
 			result = alipayClient.pageExecute(alipayRequest).getBody();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
-	} 
+	}
 }

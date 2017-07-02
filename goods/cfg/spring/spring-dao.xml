@@ -34,8 +34,9 @@
 	<!-- 4.配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中（新写法） -->
 	<mybatis-spring:scan base-package="com.cheng.dao" />
 	<context:component-scan base-package="com.cheng.*.dao" />
-	<!--老式写法 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
-		注入sqlSessionFactory <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" 
-		/> 给出需要扫描Dao接口包 <property name="basePackage" value="com.cheng.dao" /> </bean> -->
-
+	<!--
+		老式写法   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
+		注入sqlSessionFactory <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+		 给出需要扫描Dao接口包 <property name="basePackage" value="com.cheng.dao" /></bean>
+	 -->
 </beans>

@@ -14,7 +14,7 @@ import com.cheng.domain.CategoryExample;
 
 @Repository
 public class CategoryMapperImpl implements CategoryMapper {
- 
+
 	@Autowired
 	private CategoryMapper categoryMapper;
 

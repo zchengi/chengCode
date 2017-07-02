@@ -9,15 +9,16 @@
   
 	<!-- 配置SpringMVC -->
 	<!-- 1.开启SpringMVC注解模式 -->
-	<!-- 简化配置： (1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter 
-		(2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持 -->
+	<!-- 简化配置： 
+		(1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter 
+		(2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持 
+	-->
 	<mvc:annotation-driven conversion-service="conversionService" />
 
 	<!-- 2.静态资源默认servlet配置 (1)加入对静态资源的处理：js,gif,png (2)允许使用"/"做整体映射 -->
 	<mvc:default-servlet-handler />
 	<!-- 开启spring注解 -->
 	<context:annotation-config />
-
 
 	<!-- 3.配置jsp 显示ViewResolver -->
 	<bean
@@ -36,7 +37,6 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-
 	<!-- 5.自制参数绑定 -->
 	<bean id="conversionService"
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
@@ -44,14 +44,14 @@
 		<property name="converters">
 			<list>
 				<!-- 这个地方填自己的类 -->
-				<bean class="com.cheng.converters.StringToDate" />
+				<!-- <bean class="" /> -->
 			</list>
 		</property>
 	</bean>
+	
 	<!-- 6.文件上传 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
- 
 		<!-- one of the properties available; the maximum file size in bytes -->
 		<property name="maxUploadSize" value="204800000" />
 		<property name="defaultEncoding" value="utf-8" />

@@ -26,16 +26,15 @@
 		<c:forEach items="${books}" var="book">
 			<li>
 				<div class="inner">
-
-					<a class="pic"
-						href="<c:url value='/book/selectbybid/${book.bid}'/>"><img
-						src="<c:url value='/${book.imageB}'/>" border="0" /></a>
+					<a class="pic" href="<c:url value='/book/selectbybid/${book.bid}'/>">
+					<img src="<c:url value='/${book.imageB}'/>" border="0" /></a>
 					<p class="price">
-						<span class="price_n">&yen;${book.currprice}</span> <span
-							class="price_r">&yen;${book.price}</span> (<span class="price_s">${book.discount}</span>)
+						<span class="price_n">&yen;${book.currprice}</span> 
+						<span class="price_r">&yen;${book.price}</span> 
+						(<span class="price_s">${book.discount}</span>)
 					</p>
 					<p>
-						<a id="bookname" title="${book.bname}"
+						<a id="bookname" title="${book.bname}" 
 							href="<c:url value='/book/selectbybid/${book.bid}'/>">${book.bname}</a>
 					</p>
 					<p>
@@ -43,8 +42,8 @@
 							name='P_zz' title='${book.author}'>${book.author}</a>
 					</p>
 					<p class="publishing">
-						<span>出 版 社：</span><a
-							href="<c:url value='/book/getpress?press=${book.press}'/>">${book.press}</a>
+						<span>出 版 社：</span>
+						<a href="<c:url value='/book/getpress?press=${book.press}'/>">${book.press}</a>
 					</p>
 					<p class="publishing_time">
 						<span>出版时间：</span>${book.printtime}</p>
@@ -53,12 +52,9 @@
 		</c:forEach>
 	</ul>
 	<div style="float:left; width: 100%; text-align: center;">
-		<hr />
-		<br />
+		<hr /><br />
 		<%@include file="/jsps/pager/pager.jsp"%>
 	</div>
-
 </body>
-
 </html>
 

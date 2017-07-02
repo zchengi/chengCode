@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alipay.api.AlipayApiException;
-import com.alipay.api.AlipayClient;
-import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
-import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.config.AlipayConfig;
 import com.cheng.domain.myOrder;
 import com.cheng.order.povo.DingdanPovo;
@@ -128,7 +125,7 @@ public class OrderController {
 		// ——请在这里编写您的程序（以下代码仅作参考）——
 		if (signVerified) {
 			model.addAttribute("code", "success");
-			model.addAttribute("msg","支付成功");
+			model.addAttribute("msg", "支付成功");
 		} else {
 			model.addAttribute("code", "error");
 			model.addAttribute("msg", "支付失败");

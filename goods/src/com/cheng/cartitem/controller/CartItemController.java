@@ -88,7 +88,7 @@ public class CartItemController {
 	@RequestMapping(value = "/accounts", method = RequestMethod.POST)
 	public String accounts(String[] ids, Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		
+
 		List<CartItempovo> povos = cartItemServiceImpl.selectAccounts(ids,
 				user.getUid());
 		model.addAttribute("ids", ids);

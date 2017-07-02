@@ -2,7 +2,9 @@ package com.cheng.dao;
 
 import com.cheng.domain.User;
 import com.cheng.domain.UserExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
