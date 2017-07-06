@@ -118,7 +118,6 @@ public class OrderController {
 			}
 			params.put(name, valueStr);
 		}
-
 		boolean signVerified = AlipaySignature.rsaCheckV1(params,
 				AlipayConfig.alipay_public_key, AlipayConfig.charset,
 				AlipayConfig.sign_type); // 调用SDK验证签名
@@ -130,7 +129,6 @@ public class OrderController {
 			model.addAttribute("code", "error");
 			model.addAttribute("msg", "支付失败");
 		}
-
 		return "jsps/msg";
 	}
 }

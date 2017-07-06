@@ -8,20 +8,41 @@
    
 	<!-- 配置整合mybatis过程 --> 
 	<!-- 1.配置数据库相关参数properties的属性：${url} -->
-	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- <context:property-placeholder location="classpath:jdbc.properties" /> -->
+	<context:property-placeholder location="classpath:hikaricp.properties" />
 	<!-- 2.数据库连接池 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<!-- 配置连接池属性 -->
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		配置连接池属性
 		<property name="user" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
 		<property name="driverClass" value="${jdbc.driverClass}"></property>
-	</bean> 
+	</bean>  -->
+	  
+	<!-- Hikari Datasource -->  
+	<bean id="dataSourceHikari" class="com.zaxxer.hikari.HikariDataSource">
+		<!-- 可以不指定，系统自动识别 -->
+		<property name="driverClassName" value="${hikaricp.driverClassName}"/>
+        <property name="jdbcUrl" value="${hikaricp.url}"/>
+        <property name="username" value="${hikaricp.username}"/>
+        <property name="password" value="${hikaricp.password}"/>
+        <!-- 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒 -->  
+        <property name="connectionTimeout" value="${hikaricp.connectionTimeout}"/>
+        <!-- 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟 -->  
+        <property name="idleTimeout" value="${hikaricp.idleTimeout}"/>
+        <!-- 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟-->  
+        <property name="maxLifetime" value="${hikaricp.maxLifetime}"/>
+        <!-- 连接池中允许的最大连接数。缺省值：10； -->  
+        <property name="maximumPoolSize" value="${hikaricp.maximumPoolSize}"/>
+        <!-- 连接池中允许的最小连接数。缺省值：10； -->  
+        <property name="minimumIdle" value="${hikaricp.minimumIdle}"/>
+	</bean>
 
 	<!-- 3.配置SqlSessionFactory对象 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 注入数据库连接池 -->
-		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="dataSource" ref="dataSource" /> -->
+		<property name="dataSource" ref="dataSourceHikari"/>
 		<!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 扫描entity包 使用别名 多个包可以用,或;隔开 -->

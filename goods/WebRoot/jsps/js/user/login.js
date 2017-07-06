@@ -92,7 +92,7 @@ function validateLoginpass() {
 /*
  * 校验验证码
  */
-/*function validateVerifyCode() {
+function validateVerifyCode() {
 	var bool = false;
 	$("#verifyCodeError").css("display", "none");
 	var value = $("#verifyCode").val();
@@ -125,7 +125,7 @@ function validateLoginpass() {
 		});
 	}
 	return bool;
-}*/
+}
 /**
  * 验证码换一张功能
  */
