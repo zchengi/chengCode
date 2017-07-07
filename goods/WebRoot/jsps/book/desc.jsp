@@ -65,9 +65,12 @@
 		<div class="divForm">
 			<form id="form1" action="<c:url value='/cartitem/addcartitem'/>" method="post">
 				<input type="hidden" name="bid" value="${book.bid}"/>
-  				我要买：<input id="cnt" style="width: 40px;text-align: center;" type="text" name="quantity" value="1"/>件
+  				我要买：
+  				<input id="cnt" style="width: 40px;text-align: center;" type="text" name="quantity" value="1"/>件
   			</form>
-  			<a id="btn" href="javascript:$('#form1').submit();"></a>
+  			<a id="btn" href="javascript:$('#form1').submit();" 
+  				<c:if test="${sessionScope.user.loginname==null }">onclick="alert('请您先登录！');return false;"</c:if> 
+  			></a>
   		</div>	
 	</div>
   </div>

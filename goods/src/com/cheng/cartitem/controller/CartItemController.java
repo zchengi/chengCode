@@ -75,11 +75,16 @@ public class CartItemController {
 	public String addCartitem(CartItem newcartItem, HttpSession session,
 			Model model) {
 		User user = (User) session.getAttribute("user");
-		newcartItem.setUid(user.getUid());
-		List<CartItempovo> povos = cartItemServiceImpl.addCartitem(newcartItem,
-				user.getUid());
-		model.addAttribute("cartItems", povos);
-		return "jsps/cart/list";
+		if (user != null) {
+			newcartItem.setUid(user.getUid());
+			List<CartItempovo> povos = cartItemServiceImpl.addCartitem(
+					newcartItem, user.getUid());
+			model.addAttribute("cartItems", povos);
+			return "jsps/cart/list";
+		}
+		model.addAttribute("code", "error");
+		model.addAttribute("msg", "用户未登录，请先登录后再购买！");
+		return "jsps/msg";
 	}
 
 	/**
