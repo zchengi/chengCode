@@ -20,7 +20,7 @@
 
 <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/menu/mymenu.js'/>"></script>
-<script language="javascript">
+<script type="text/javascript">
 	var bar = new Q6MenuBar("bar", "网上书城");
 	$(function() {
 		bar.colorStyle = 4;

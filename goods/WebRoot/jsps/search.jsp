@@ -46,7 +46,8 @@
     <form action="<c:url value='/book/searchbook'/>" method="post" target="body" id="form1">
     	<input type="text" name="bname"/>
     	<span>
-    		<a href="javascript:document.getElementById('form1').submit();"><img align="top" border="0" src="../images/btn.bmp"/></a>
+    		<a href="javascript:document.getElementById('form1').submit();">
+    			<img align="top" border="0" src="../images/btn.bmp"/></a>
     		<a href="<c:url value='/jsps/gj.jsp'/>" style="font-size: 10pt; color: #404040;" target="body">高级搜索</a>
     	</span>
     </form>

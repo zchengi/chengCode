@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cheng.book.dao.BookMapperImpl;
+import com.cheng.book.dao.BookDao;
 import com.cheng.book.service.BookService;
 import com.cheng.domain.Book;
 
@@ -13,7 +13,7 @@ import com.cheng.domain.Book;
 public class BookServiceImpl implements BookService {
 
 	@Autowired
-	private BookMapperImpl bookMapperImpl;
+	private BookDao bookMapperImpl;
 
 	/**
 	 * 查询所有书籍

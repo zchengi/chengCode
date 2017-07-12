@@ -11,7 +11,7 @@ import com.cheng.domain.BookExample;
 import com.github.pagehelper.PageHelper;
 
 @Repository
-public class BookMapperImpl implements BookMapper {
+public class BookDao implements BookMapper {
 
 	@Autowired
 	private BookMapper bookMapper;
@@ -19,7 +19,7 @@ public class BookMapperImpl implements BookMapper {
 	public List<Book> selectByCidForBooks(String cid) {
 		BookExample bookExample = new BookExample();
 		bookExample.createCriteria().andCidEqualTo(cid);
-		return bookMapper.selectByExample(bookExample);
+		return this.bookMapper.selectByExample(bookExample);
 	}
 
 	public List<Book> selectByCidForBookList(Integer page, Integer pagesize,
@@ -27,32 +27,32 @@ public class BookMapperImpl implements BookMapper {
 		BookExample bookExample = new BookExample();
 		bookExample.createCriteria().andCidEqualTo(cid);
 		PageHelper.startPage(page, pagesize);
-		return bookMapper.selectByExample(bookExample);
+		return this.bookMapper.selectByExample(bookExample);
 	}
 
 	public List<Book> selectByPressForBooks(String press) {
 		BookExample bookExample = new BookExample();
 		bookExample.createCriteria().andPressEqualTo(press);
-		return bookMapper.selectByExample(bookExample);
+		return this.bookMapper.selectByExample(bookExample);
 	}
 
 	public List<Book> selectByAuthorForBooks(String author) {
 		BookExample bookExample = new BookExample();
 		bookExample.createCriteria().andAuthorEqualTo(author);
-		return bookMapper.selectByExample(bookExample);
+		return this.bookMapper.selectByExample(bookExample);
 	}
 
 	public List<Book> selectByBnameForBooks(String bname) {
 		BookExample bookExample = new BookExample();
 		bookExample.createCriteria().andBnameLike("%" + bname + "%");
-		return bookMapper.selectByExample(bookExample);
+		return this.bookMapper.selectByExample(bookExample);
 
 	}
 
 	public Book selectByBid(String bid) {
 		BookExample bookExample = new BookExample();
 		bookExample.createCriteria().andBidEqualTo(bid);
-		return bookMapper.selectByExample(bookExample).get(0);
+		return this.bookMapper.selectByExample(bookExample).get(0);
 	}
 
 	public List<Book> selectByCidForAllBook(String cid) {
@@ -66,57 +66,57 @@ public class BookMapperImpl implements BookMapper {
 
 	@Override
 	public int countByExample(BookExample example) {
-		return 0;
+		return this.bookMapper.countByExample(example);
 	}
 
 	@Override
 	public int deleteByExample(BookExample example) {
-		return 0;
+		return this.bookMapper.deleteByExample(example);
 	}
 
 	@Override
 	public int deleteByPrimaryKey(String bid) {
-		return 0;
+		return this.bookMapper.deleteByPrimaryKey(bid);
 	}
 
 	@Override
 	public int insert(Book record) {
-		return 0;
+		return this.bookMapper.insert(record);
 	}
 
 	@Override
 	public int insertSelective(Book record) {
-		return 0;
+		return this.bookMapper.insertSelective(record);
 	}
 
 	@Override
 	public List<Book> selectByExample(BookExample example) {
-		return null;
+		return this.bookMapper.selectByExample(example);
 	}
 
 	@Override
 	public Book selectByPrimaryKey(String bid) {
-		return null;
+		return this.bookMapper.selectByPrimaryKey(bid);
 	}
 
 	@Override
 	public int updateByExampleSelective(Book record, BookExample example) {
-		return 0;
+		return this.bookMapper.updateByExampleSelective(record, example);
 	}
 
 	@Override
 	public int updateByExample(Book record, BookExample example) {
-		return 0;
+		return this.bookMapper.updateByExample(record, example);
 	}
 
 	@Override
 	public int updateByPrimaryKeySelective(Book record) {
-		return 0;
+		return this.bookMapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public int updateByPrimaryKey(Book record) {
-		return 0;
+		return this.bookMapper.updateByPrimaryKey(record);
 	}
 
 }

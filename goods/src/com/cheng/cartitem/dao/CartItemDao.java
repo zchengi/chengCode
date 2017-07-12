@@ -20,7 +20,7 @@ public class CartItemDao implements CartItemMapper {
 		CartItemExample cartItemExample = new CartItemExample();
 		cartItemExample.createCriteria().andUidEqualTo(newcartItem.getUid())
 				.andBidEqualTo(newcartItem.getBid());
-		return cartItemMapper.selectByExample(cartItemExample);
+		return this.cartItemMapper.selectByExample(cartItemExample);
 	}
 
 	public List<CartItempovo> selectCartIempovoByUid(String uid) {
@@ -37,12 +37,12 @@ public class CartItemDao implements CartItemMapper {
 
 	@Override
 	public int countByExample(CartItemExample example) {
-		return 0;
+		return this.cartItemMapper.countByExample(example);
 	}
 
 	@Override
 	public int deleteByExample(CartItemExample example) {
-		return 0;
+		return this.cartItemMapper.deleteByExample(example);
 	}
 
 	@Override
@@ -57,27 +57,27 @@ public class CartItemDao implements CartItemMapper {
 
 	@Override
 	public int insertSelective(CartItem record) {
-		return 0;
+		return this.cartItemMapper.insertSelective(record);
 	}
 
 	@Override
 	public List<CartItem> selectByExample(CartItemExample example) {
-		return null;
+		return this.cartItemMapper.selectByExample(example);
 	}
 
 	@Override
 	public CartItem selectByPrimaryKey(String cartitemid) {
-		return null;
+		return this.cartItemMapper.selectByPrimaryKey(cartitemid);
 	}
 
 	@Override
 	public int updateByExampleSelective(CartItem record, CartItemExample example) {
-		return 0;
+		return this.cartItemMapper.updateByExampleSelective(record, example);
 	}
 
 	@Override
 	public int updateByExample(CartItem record, CartItemExample example) {
-		return 0;
+		return this.cartItemMapper.updateByExample(record, example);
 	}
 
 	@Override

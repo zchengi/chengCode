@@ -95,4 +95,6 @@ public interface CategoryMapper {
      * @mbggenerated Thu Jun 22 08:35:00 CST 2017
      */
     int updateByPrimaryKey(Category record);
+
+	List<Category> selectByCidForPid(String cid);
 }

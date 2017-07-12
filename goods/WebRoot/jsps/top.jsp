@@ -13,10 +13,8 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/css.css'/>">
-<script type="text/javascript"
-	src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/css.css'/>">
+<script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 <style type="text/css">
 body {
 	background: #15B69A;

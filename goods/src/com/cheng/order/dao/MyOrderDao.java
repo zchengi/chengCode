@@ -19,20 +19,17 @@ public class MyOrderDao implements myOrderMapper {
 
 	@Override
 	public int countByExample(myOrderExample example) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.countByExample(example);
 	}
 
 	@Override
 	public int deleteByExample(myOrderExample example) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.deleteByExample(example);
 	}
 
 	@Override
 	public int deleteByPrimaryKey(String oid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.deleteByPrimaryKey(oid);
 	}
 
 	@Override
@@ -42,44 +39,37 @@ public class MyOrderDao implements myOrderMapper {
 
 	@Override
 	public int insertSelective(myOrder record) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.insertSelective(record);
 	}
 
 	@Override
 	public List<myOrder> selectByExample(myOrderExample example) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.myOrderMapper.selectByExample(example);
 	}
 
 	@Override
 	public myOrder selectByPrimaryKey(String oid) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.myOrderMapper.selectByPrimaryKey(oid);
 	}
 
 	@Override
 	public int updateByExampleSelective(myOrder record, myOrderExample example) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.updateByExampleSelective(record, example);
 	}
 
 	@Override
 	public int updateByExample(myOrder record, myOrderExample example) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.updateByExample(record, example);
 	}
 
 	@Override
 	public int updateByPrimaryKeySelective(myOrder record) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public int updateByPrimaryKey(myOrder record) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.myOrderMapper.updateByPrimaryKey(record);
 	}
 
 	public List<DingdanPovo> selectdingdanbyuid(String uid) {

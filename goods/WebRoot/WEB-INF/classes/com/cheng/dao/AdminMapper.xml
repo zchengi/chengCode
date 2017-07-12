@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cheng.dao.AdminMapper" >
+
+	<select id="selectByNameAndpwdForadmin" resultType="admin" parameterType="admin">
+		select adminname,adminpwd from admin where adminname=#{adminname} and adminpwd=#{adminpwd}
+	</select>
+	
+
+
   <resultMap id="BaseResultMap" type="com.cheng.domain.Admin" >
     <!--
       WARNING - @mbggenerated
