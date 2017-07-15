@@ -31,7 +31,7 @@ public class UserController {
 	public String regUser(User user, Model model) {
 		userService.regUser(user);
 		model.addAttribute("code", "success");
-		model.addAttribute("msg", "注册成功，请到邮件进行激活！");
+		model.addAttribute("msg", "注册成功，请前往邮箱激活！");
 		return "jsps/msg";
 	}
 

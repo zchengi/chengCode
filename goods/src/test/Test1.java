@@ -1,12 +1,13 @@
 package test;
 
-import java.math.BigDecimal;
 import java.security.GeneralSecurityException;
+import java.util.Date;
 import java.util.Properties;
 
-import javax.mail.Address;
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
@@ -15,68 +16,41 @@ import javax.mail.internet.MimeMessage;
 
 import org.junit.Test;
 
-import com.sun.mail.util.MailSSLSocketFactory;
-
 public class Test1 {
+	@Test
 	public void emailtest() throws AddressException, MessagingException,
 			GeneralSecurityException {
+		final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+		
+		// Get a Properties object
 		Properties props = new Properties();
+		props.setProperty("mail.smtp.host", "smtp.163.com");
+		props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+		props.setProperty("mail.smtp.socketFactory.fallback", "false");
+		props.setProperty("mail.smtp.port", "465");
+		props.setProperty("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.auth", "true");
+		final String username = "zhangyigonnn";
+		final String password = "testzhang";
+		Session session = Session.getDefaultInstance(props,
+				new Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				});
 
-		// 开启debug调试
-		props.setProperty("mail.debug", "true");
-		// 发送服务器需要身份验证
-		props.setProperty("mail.smtp.auth", "true");
-		// 设置邮件服务器主机名
-		props.setProperty("mail.host", "smtp.qq.com");
-		// 发送邮件协议名称
-		props.setProperty("mail.transport.protocol", "smtp");
-
-		MailSSLSocketFactory sf = new MailSSLSocketFactory();
-		sf.setTrustAllHosts(true);
-		props.put("mail.smtp.ssl.enable", "true");
-		props.put("mail.smtp.ssl.socketFactory", sf);
-
-		Session session = Session.getInstance(props);
-
+		// -- Create a new message --
 		Message msg = new MimeMessage(session);
-		msg.setSubject("seenews 错误");
-		StringBuilder builder = new StringBuilder();
-		builder.append("url = "
-				+ "http://blog.csdn.net/never_cxb/article/details/50524571");
-		builder.append("\n页面爬虫错误");
-		msg.setText(builder.toString());
-		msg.setFrom(new InternetAddress("792702352@qq.com"));
 
-		Transport transport = session.getTransport();
-		transport
-				.connect("smtp.qq.com", "792702352@qq.com", "krkuksrkdhnxbccj");
+		// -- Set the FROM and TO fields --
+		msg.setFrom(new InternetAddress("zhangyigonnn@163.com"));
+		msg.setRecipients(Message.RecipientType.TO,
+				InternetAddress.parse("792702352@qq.com", false));
+		msg.setSubject("你好,这是来自本地11111服务器");
+		msg.setText("来自测试邮件");
+		msg.setSentDate(new Date());
+		Transport.send(msg);
 
-		transport.sendMessage(msg, new Address[] { new InternetAddress(
-				"2245090465@qq.com") });
-		transport.close();
-	}
-
-	public void emailtest2() {
-		try {
-			// 需要认证
-			Properties props = new Properties();
-			// 开启debug调试
-			props.setProperty("mail.debug", "true");
-			props.put("mail.smtp.host", "smtp.163.com");
-			props.put("mail.smtp.auth", "true");
-			props.put("mail.transport.protocol", "smtp");
-			props.put("mail.from", "zhangyigonnn@163.com");
-
-			//
-
-		} catch (Exception e) {
-		}
-	}
-
-	@Test
-	public void test3() {
-		BigDecimal bigDecimal = new BigDecimal(1);
-		BigDecimal multiply = bigDecimal.divide(new BigDecimal(10));
-		System.out.println(multiply);
+		System.out.println("Message sent.");
 	}
 }

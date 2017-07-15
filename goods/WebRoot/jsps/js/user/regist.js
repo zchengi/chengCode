@@ -185,7 +185,7 @@ function yanzhengemail() {
 		$("#emailError").text("请输入正确的邮箱格式！");
 		showError($("#emailError"));
 		return false;
-	}alert(email);
+	}
 	// 3.验证邮箱是否唯一
 	$.ajax({
 		async : false,

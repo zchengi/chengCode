@@ -25,7 +25,7 @@
 				<span class="spanBtnDisabled">上一页</span>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/book/pagehelper?page=${page.prePage}&cid=${books[0].cid}'/>" class="aBtn bold">上一页</a>
+				<a href="<c:url value='/book/pagehelper?page=${page.prePage}&cid=${books[0].cid}'/>" class="aBtn">上一页</a>
 			</c:otherwise>
 		</c:choose>
 		
@@ -72,7 +72,7 @@
 				<span class="spanBtnDisabled">下一页</span>
 			</c:when>
 			<c:otherwise>
-				<a href="<c:url value='/book/pagehelper?page=${page.nextPage}&cid=${books[0].cid}'/>" class="aBtn bold">下一页</a>
+				<a href="<c:url value='/book/pagehelper?page=${page.nextPage}&cid=${books[0].cid}'/>" class="aBtn">下一页</a>
 			</c:otherwise>
 		</c:choose>
 		&nbsp;&nbsp;&nbsp;&nbsp;
