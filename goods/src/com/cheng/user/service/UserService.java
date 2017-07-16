@@ -9,16 +9,11 @@ import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import mailhelper.Mail;
-import mailhelper.MailUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,70 +47,50 @@ public class UserService {
 		user.setStatus(false);
 		user.setActivationcode(UUIDHelper.getUUID() + UUIDHelper.getUUID());
 
-		userMapper.insert(user);
 		// 发送邮件激活
-		/*Properties prop = new Properties();
+		// Get a Properties object
+		Properties prop = new Properties();
 		try {
 			prop.load(this.getClass().getClassLoader()
-					.getResourceAsStream("163email.properties"));
-			// 访问 邮件服务器
-			String username = prop.getProperty("username");
-			String password = prop.getProperty("password");
-			String host = prop.getProperty("host");
-			Session session = MailUtils.createSession(host, username, password);
-
-			// 制作邮件
-			String from = prop.getProperty("from");
-			String to = user.getEmail();
-			String subject = prop.getProperty("subject");
-			String content = MessageFormat.format(prop.getProperty("content"),
-					user.getActivationcode());
-
-			Mail mail = new Mail(from, to, subject, content);
-
-			// 发送
-			MailUtils.send(session, mail);
-
-		} catch (IOException e) {
-			System.out.println(e);
-		} catch (MessagingException e) {
-			System.out.println(e);
-		}*/
-final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
-		
-		// Get a Properties object
-		Properties props = new Properties();
-		props.setProperty("mail.smtp.host", "smtp.163.com");
-		props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
-		props.setProperty("mail.smtp.socketFactory.fallback", "false");
-		props.setProperty("mail.smtp.port", "465");
-		props.setProperty("mail.smtp.socketFactory.port", "465");
-		props.put("mail.smtp.auth", "true");
+					.getResourceAsStream("163emailForaliyun.properties"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		// 邮箱帐号
 		final String username = "zhangyigonnn";
+		// 邮箱密码
 		final String password = "testzhang";
-		Session session = Session.getDefaultInstance(props,
-				new Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(username, password);
-					}
-				});
+		// 邮件内容
+		String text = MessageFormat.format(prop.getProperty("content"),
+				user.getActivationcode());
+		// 发送方
+		String from = prop.getProperty("from");
+		// 接收方
+		String to = user.getEmail();
+		// 邮件头
+		String subject = prop.getProperty("subject");
 
+		// 邮箱会话
+		Session session = Session.getDefaultInstance(prop, new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
 		// -- Create a new message --
 		Message msg = new MimeMessage(session);
-
 		// -- Set the FROM and TO fields --
-	
 		try {
-			msg.setFrom(new InternetAddress("zhangyigonnn@163.com"));
+			msg.setFrom(new InternetAddress(from));
 			msg.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("792702352@qq.com", false));
-			msg.setSubject("你好,这是来自本地1111asdasdasdasd1服务器");
-			msg.setText("来自测试邮件");
+					InternetAddress.parse(to, false));
+			msg.setContent(text, "text/html;charset=utf-8");
+			msg.setSubject(subject);
 			msg.setSentDate(new Date());
 			Transport.send(msg);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		userMapper.insert(user);
 		System.out.println("Message sent.");
 	}
 
