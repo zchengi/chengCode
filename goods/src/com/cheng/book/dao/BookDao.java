@@ -13,7 +13,7 @@ import com.github.pagehelper.PageHelper;
 @Repository
 public class BookDao implements BookMapper {
 
-	@Autowired
+	@Autowired 
 	private BookMapper bookMapper;
 
 	public List<Book> selectByCidForBooks(String cid) {
