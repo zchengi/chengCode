@@ -20,6 +20,48 @@
 		`status`=#{status} WHERE myOrder.oid=#{oid}
 	</update>
 
+	<select id="selectAll" resultMap="dingdanpovo">
+		SELECT
+		myOrder.*,
+		orderitem.bid,
+		orderitem.bname,
+		orderitem.currPrice,
+		orderitem.image_b,
+		orderitem.oid
+		orderitem_oid,
+		orderitem.orderItemId,
+		orderitem.quantity,
+		orderitem.subtotal
+		FROM
+		myOrder,orderitem
+		WHERE
+		orderitem.oid=myOrder.oid
+		AND
+		orderitem.oid=myOrder.oid
+	</select>
+
+	<select id="selectByStatus" parameterType="int" resultMap="dingdanpovo">
+		SELECT
+		myOrder.*,
+		orderitem.bid,
+		orderitem.bname,
+		orderitem.currPrice,
+		orderitem.image_b,
+		orderitem.oid
+		orderitem_oid,
+		orderitem.orderItemId,
+		orderitem.quantity,
+		orderitem.subtotal
+		FROM
+		myOrder,orderitem
+		WHERE
+		orderitem.oid=myOrder.oid
+		AND
+		orderitem.oid=myOrder.oid
+		AND
+		myOrder.status=#{status}
+	</select>
+
 	<select id="selectByOid" parameterType="string" resultMap="dingdanpovo">
 		SELECT
 		myOrder.*,
@@ -57,7 +99,8 @@
 		orderitem
 		WHERE
 		myOrder.uid = #{uid}
-		AND myOrder.oid = orderitem.oid
+		AND myOrder.oid =
+		orderitem.oid
 	</select>
 
 

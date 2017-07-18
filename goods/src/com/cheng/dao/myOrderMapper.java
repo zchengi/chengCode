@@ -10,9 +10,10 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 public interface myOrderMapper {
+	List<DingdanPovo> selectAll();
 
 	DingdanPovo selectByOid(String oid);
-	
+
 	void updateDindans(Map<String, Object> map);
 
 	List<DingdanPovo> selectdingdanbyuid(String uid);
@@ -106,4 +107,8 @@ public interface myOrderMapper {
 	 * @mbggenerated Tue Jun 27 10:48:43 CST 2017
 	 */
 	int updateByPrimaryKey(myOrder record);
+
+	List<DingdanPovo> selectByStatus(int status);
+
+
 }

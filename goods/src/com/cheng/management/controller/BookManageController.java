@@ -21,7 +21,7 @@ import com.cheng.domain.Book;
 import com.cheng.management.serviceImpl.BookManageServiceImpl;
 import com.github.pagehelper.PageInfo;
 
-@RequestMapping("bookmanage")
+@RequestMapping("/bookmanage")
 @Controller
 public class BookManageController {
 
@@ -95,7 +95,7 @@ public class BookManageController {
 	/**
 	 * 获取2级目录
 	 */
-	@RequestMapping(value = "get2category", method = RequestMethod.POST)
+	@RequestMapping(value = "/get2category", method = RequestMethod.POST)
 	public @ResponseBody Categorypojo get2Category(Model model, String cid) {
 		return bookManageServiceImpl.get2category(cid);
 	}
@@ -103,7 +103,7 @@ public class BookManageController {
 	/**
 	 * 添加图书页
 	 */
-	@RequestMapping("toadd")
+	@RequestMapping("/toadd")
 	public String toAdd(Model model) {
 		List<Categorypojo> categorys = bookManageServiceImpl.getCategory();
 		model.addAttribute("categorys", categorys);
@@ -113,7 +113,7 @@ public class BookManageController {
 	/**
 	 * 添加图书
 	 */
-	@RequestMapping(value = "addbook", method = RequestMethod.POST)
+	@RequestMapping(value = "/addbook", method = RequestMethod.POST)
 	public String addBook(MultipartFile image_w, MultipartFile image_b,
 			Book book, Model model, HttpServletRequest request) {
 		String msg = bookManageServiceImpl.addBook(book, image_w, image_b,
@@ -127,7 +127,7 @@ public class BookManageController {
 	/**
 	 * 删除图书
 	 */
-	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(Book book, Model model, HttpServletRequest request) {
 		String msg = bookManageServiceImpl.delete(book, request.getSession()
 				.getServletContext().getRealPath("/"));
@@ -139,7 +139,7 @@ public class BookManageController {
 	/**
 	 * 修改图书
 	 */
-	@RequestMapping(value = "edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String edit(Book book, Model model) {
 		String msg = bookManageServiceImpl.edit(book);
 		model.addAttribute("msg", msg);
