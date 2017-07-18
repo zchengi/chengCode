@@ -22,7 +22,6 @@ public class BookController {
 	@Autowired
 	private BookServiceImpl bookServiceImpl;
 
-
 	/**
 	 * 查询作者所有作品
 	 */

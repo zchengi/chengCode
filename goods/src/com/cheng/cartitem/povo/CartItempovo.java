@@ -36,11 +36,4 @@ public class CartItempovo extends Book {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	@Override
-	public String toString() {
-		return super.toString() + "CartItempovo [cartItem=" + cartItem
-				+ ", user=" + user + "]";
-	}
-
 }

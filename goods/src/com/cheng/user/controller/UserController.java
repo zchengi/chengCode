@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cheng.domain.User;
-import com.cheng.user.service.UserService;
-import com.cheng.vo.UserPwdVo;
+import com.cheng.user.serviceImpl.UserServiceImpl;
+import com.cheng.user.vo.UserPwdVo;
 
 /**
  * 用户注册控制层
@@ -22,7 +22,7 @@ import com.cheng.vo.UserPwdVo;
 @Controller
 public class UserController {
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 
 	/**
 	 * 用户注册

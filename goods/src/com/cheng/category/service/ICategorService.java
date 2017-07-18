@@ -7,6 +7,4 @@ import com.cheng.category.pojo.Categorypojo;
 public interface ICategorService {
 
 	List<Categorypojo> getCategory() throws Exception;
-
-	
 }

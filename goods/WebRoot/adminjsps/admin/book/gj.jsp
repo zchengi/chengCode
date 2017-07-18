@@ -12,7 +12,9 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
+
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/css.css'/>">
+
 <style type="text/css">
 table {
 	color: #404040;
@@ -20,7 +22,6 @@ table {
 }
 </style>
 </head>
-
 <body>
 	<form action="<c:url value='/book/getbookgj'/>" method="post">
 		<table align="center">

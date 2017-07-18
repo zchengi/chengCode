@@ -94,7 +94,7 @@ public class CartItemDao implements CartItemMapper {
 	public void deleteCartitems(Map<String, Object> ids) {
 		this.cartItemMapper.deleteCartitems(ids);
 	}
-
+	@Override
 	public List<CartItempovo> selectAccounts(Map<String, Object> map) {
 		return this.cartItemMapper.selectAccounts(map);
 	}

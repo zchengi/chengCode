@@ -14,7 +14,7 @@ public class BookManageDao implements BookMapper {
 	
 	@Autowired
 	private BookMapper bookMapper;
-	
+
 	@Override
 	public List<Book> selectByCidForAllBook(String cid) {
 		return this.bookMapper.selectByCidForAllBook(cid);

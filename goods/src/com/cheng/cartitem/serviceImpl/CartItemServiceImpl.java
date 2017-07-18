@@ -29,6 +29,7 @@ public class CartItemServiceImpl implements CartItemService {
 		cartItemDao.deleteByPrimaryKey(cartitemid);
 	}
 
+	@Override
 	public void editCartitem(CartItem newcartItem) {
 		cartItemDao.updateByPrimaryKeySelective(newcartItem);
 	}
@@ -47,12 +48,14 @@ public class CartItemServiceImpl implements CartItemService {
 		return cartItemDao.selectCartIempovoByUid(uid);
 	}
 
+	@Override
 	public void deleteCartitems(String[] ids) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("ids", ids);
 		cartItemDao.deleteCartitems(map);
 	}
 
+	@Override
 	public List<CartItempovo> selectAccounts(String[] ids, String uid) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("ids", ids);

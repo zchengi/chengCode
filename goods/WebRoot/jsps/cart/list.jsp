@@ -13,11 +13,12 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
+
+<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/cart/list.css'/>">
+
 <script src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 <script src="<c:url value='/js/round.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/jsps/cart/list.js' />"></script>
-<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/cart/list.css'/>">
-
 </head>
 <body>
 	<c:choose>

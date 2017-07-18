@@ -110,5 +110,4 @@ public interface myOrderMapper {
 
 	List<DingdanPovo> selectByStatus(int status);
 
-
 }

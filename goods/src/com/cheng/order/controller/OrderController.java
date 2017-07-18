@@ -31,6 +31,9 @@ public class OrderController {
 	@Autowired
 	private OrderServiceImpl orderServiceImpl;
 
+	/**
+	 * 提交订单
+	 */
 	@RequestMapping(value = "/dingdan", method = RequestMethod.POST)
 	public String dingdan(String[] ids, myOrder dingdan, Model model) {
 
@@ -39,6 +42,9 @@ public class OrderController {
 		return "jsps/order/ordersucc";
 	}
 
+	/**
+	 * 订单列表页
+	 */
 	@RequestMapping(value = "/getdingdans/{uid}", method = RequestMethod.GET)
 	public String getdingdans(@PathVariable String uid, Model model) {
 		List<DingdanPovo> dingdans = orderServiceImpl.getdingdans(uid);
@@ -46,6 +52,9 @@ public class OrderController {
 		return "jsps/order/list";
 	}
 
+	/**
+	 * 订单描述页
+	 */
 	@RequestMapping(value = "/getdingdan/{oid}", method = RequestMethod.GET)
 	public String getDingdan(@PathVariable String oid, Model model) {
 		DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
@@ -53,7 +62,9 @@ public class OrderController {
 		return "jsps/order/desc";
 	}
 
-	// 确认
+	/**
+	 * 订单确认
+	 */
 	@RequestMapping(value = "/affirm/{oid}", method = RequestMethod.GET)
 	public String affirmDingdan(@PathVariable String oid, Model model) {
 		orderServiceImpl.affirmDingdan(oid);
@@ -63,7 +74,9 @@ public class OrderController {
 		return "jsps/msg";
 	}
 
-	// 取消
+	/**
+	 * 订单取消
+	 */
 	@RequestMapping(value = "/cancel/{oid}", method = RequestMethod.GET)
 	public String cancelDingdan(@PathVariable String oid, Model model) {
 		orderServiceImpl.cancelDingdan(oid);
@@ -73,7 +86,9 @@ public class OrderController {
 		return "jsps/msg";
 	}
 
-	// 将要支付
+	/**
+	 * 订单将要支付
+	 */
 	@RequestMapping(value = "/payying/{oid}", method = RequestMethod.GET)
 	public String payyingDingdan(@PathVariable String oid, Model model) {
 		DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
@@ -81,7 +96,9 @@ public class OrderController {
 		return "jsps/order/pay";
 	}
 
-	// 支付
+	/**
+	 * 订单支付
+	 */
 	@RequestMapping(value = "/pay/{oid}", method = RequestMethod.GET)
 	public void payDingdan(@PathVariable String oid, Model model,
 			HttpServletResponse response) {
@@ -93,7 +110,9 @@ public class OrderController {
 		}
 	}
 
-	// 支付成功页面跳转
+	/**
+	 * 订单支付成功跳转
+	 */
 	@RequestMapping(value = "/returnurl", method = RequestMethod.GET)
 	public String returnUrl(Model model, HttpServletRequest request)
 			throws UnsupportedEncodingException, AlipayApiException {

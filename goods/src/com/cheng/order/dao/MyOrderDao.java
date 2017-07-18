@@ -96,6 +96,4 @@ public class MyOrderDao implements myOrderMapper {
 		return myOrderMapper.selectByStatus(status);
 	}
 
-	
-
 }

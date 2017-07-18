@@ -1,4 +1,4 @@
-package com.cheng.vo;
+package com.cheng.user.vo;
 
 import com.cheng.domain.User;
 
@@ -13,8 +13,4 @@ public class UserPwdVo extends User {
 		this.newpass = newpass;
 	}
 
-	@Override
-	public String toString() {
-		return super.toString() + "  UserPwdVo [newpass=" + newpass + "]";
-	}
 }

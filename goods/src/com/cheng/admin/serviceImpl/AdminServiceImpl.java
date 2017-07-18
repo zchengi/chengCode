@@ -9,7 +9,7 @@ import com.cheng.domain.Admin;
 
 @Service
 public class AdminServiceImpl implements AdminService {
-	
+
 	@Autowired
 	private AdminDao adminDao;
 

@@ -13,11 +13,8 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/jsps/css/cart/showitem.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/jsps/css/cart/showitem.css'/>">
+
 <script src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
 <script src="<c:url value='/js/round.js'/>"></script>
 <style type="text/css">
@@ -48,7 +45,6 @@
 
 <body>
 	<form id="form1" action="<c:url value='/order/dingdan'/>" method="post">
-		<%-- <input type="hidden" name="ids" value="${ids}" /> --%>
 		<c:forEach  items="${ids}"  var="id">
 			<input type="hidden" name="ids" value="${id}"/>
 		</c:forEach>	

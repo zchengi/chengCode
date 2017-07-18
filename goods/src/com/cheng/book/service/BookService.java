@@ -19,5 +19,5 @@ public interface BookService {
 
 	Book selectByBid(String bid);
 
-	List<Book> pageHelper(Integer page, Integer pagesize,String book);
+	List<Book> pageHelper(Integer page, Integer pagesize, String book);
 }

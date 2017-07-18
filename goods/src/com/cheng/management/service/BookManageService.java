@@ -18,5 +18,5 @@ public interface BookManageService {
 
 	String edit(Book book);
 
-	String delete(Book book,String path);
+	String delete(Book book, String path);
 }

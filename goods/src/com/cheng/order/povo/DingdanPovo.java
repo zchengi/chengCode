@@ -8,11 +8,6 @@ import com.cheng.domain.myOrder;
 public class DingdanPovo extends myOrder {
 	private List<Orderitem> orderitems;
 
-	@Override
-	public String toString() {
-		return "DingdanPovo [orderitems=" + orderitems + "]" + super.toString();
-	}
-
 	public List<Orderitem> getOrderitems() {
 		return orderitems;
 	}

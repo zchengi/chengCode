@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import yanzhengma.Verify;
 
-import com.cheng.validate.service.ValidateService;
+import com.cheng.validate.serviceImpl.ValidateServiceImpl;
 
 /**
  * 用户注册验证控制层
  */
 @RequestMapping("/validate")
 @Controller
-public class RegValiController {
+public class ValidateController {
 
 	@Autowired
-	private ValidateService validateService;
+	private ValidateServiceImpl validateServiceImpl;
 
 	/**
 	 * 获取验证码
@@ -47,7 +47,8 @@ public class RegValiController {
 	public void valiLoginName(HttpServletRequest request,
 			HttpServletResponse response, @RequestParam String loginname)
 			throws IOException {
-		response.getWriter().print(validateService.valiLoginName(loginname));
+		response.getWriter()
+				.print(validateServiceImpl.valiLoginName(loginname));
 	}
 
 	/**
@@ -55,8 +56,8 @@ public class RegValiController {
 	 */
 	@RequestMapping(value = "/valiemail", method = RequestMethod.POST)
 	public @ResponseBody Boolean valiemail(String email) {
-		boolean b = validateService.valiemail(email);
-		return b;
+		return validateServiceImpl.valiemail(email);
+
 	}
 
 	/**

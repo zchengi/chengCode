@@ -101,15 +101,8 @@ public class CategoryDao implements CategoryMapper {
 		return this.categoryMapper.updateByPrimaryKey(record);
 	}
 
+	@Override
 	public List<Category> selectByCidForPid(String cid) {
-		CategoryExample example = new CategoryExample();
-		example.createCriteria().andPidEqualTo(cid);
-		return categoryMapper.selectByExample(example);
-	}
-
-	public List<Category> selectByCname(Category category) {
-		CategoryExample example = new CategoryExample();
-		example.createCriteria().andCnameEqualTo(category.getCname());
-		return categoryMapper.selectByExample(example);
+		return this.categoryMapper.selectByCidForPid(cid);
 	}
 }

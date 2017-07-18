@@ -29,7 +29,7 @@ public class ClassifiedController {
 	}
 
 	/*
-	 * 添加二级图书列表页面
+	 * 添加二级分类列表页面
 	 */
 	@RequestMapping("toadd2")
 	public String toAdd2(Model model) throws Exception {
@@ -39,7 +39,7 @@ public class ClassifiedController {
 	}
 
 	/*
-	 * 添加一级图书列表
+	 * 添加一级分类列表
 	 */
 	@RequestMapping("/add")
 	public String add(Category category, Model model) {
@@ -53,7 +53,7 @@ public class ClassifiedController {
 	}
 
 	/*
-	 * 修改一级图书列表页面
+	 * 修改一级分类列表页面
 	 */
 	@RequestMapping("/toedit/{cid}")
 	public String toEdit(@PathVariable String cid, Model model) {
@@ -63,7 +63,7 @@ public class ClassifiedController {
 	}
 
 	/*
-	 * 修改二级图书列表页面
+	 * 修改二级分类列表页面
 	 */
 	@RequestMapping("/toedit2/{cid}")
 	public String toEdit2(@PathVariable String cid, Model model)
@@ -76,7 +76,7 @@ public class ClassifiedController {
 	}
 
 	/*
-	 * 修改图书列表
+	 * 修改分类列表
 	 */
 	@RequestMapping("/edit")
 	public String edit(Category category, Model model) {
