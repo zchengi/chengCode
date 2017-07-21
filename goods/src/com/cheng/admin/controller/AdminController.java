@@ -15,31 +15,31 @@ import com.cheng.domain.Admin;
 @Controller
 public class AdminController {
 
-	@Autowired
-	private AdminServiceImpl adminServiceImpl;
+    @Autowired
+    private AdminServiceImpl adminServiceImpl;
 
-	/**
-	 * 管理员登录
-	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(Admin admin, Model Model, HttpSession session) {
-		Admin searchAdmin = adminServiceImpl.login(admin);
-		if (searchAdmin != null) {
-			session.setAttribute("admin", searchAdmin);
-			return "adminjsps/admin/index";
-		} else {
-			Model.addAttribute("errAdmin", admin);
-			Model.addAttribute("msg", "管理员名或密码错误！");
-			return "adminjsps/login";
-		}
-	}
+    /**
+     * 管理员登录
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(Admin admin, Model Model, HttpSession session) {
+        Admin searchAdmin = adminServiceImpl.login(admin);
+        if (searchAdmin != null) {
+            session.setAttribute("admin", searchAdmin);
+            return "adminjsps/admin/index";
+        } else {
+            Model.addAttribute("errAdmin", admin);
+            Model.addAttribute("msg", "管理员名或密码错误！");
+            return "adminjsps/login";
+        }
+    }
 
-	/**
-	 * 管理员退出
-	 */
-	@RequestMapping("/exit")
-	public String exit(HttpSession session) {
-		session.invalidate();
-		return "adminjsps/login";
-	}
+    /**
+     * 管理员退出
+     */
+    @RequestMapping("/exit")
+    public String exit(HttpSession session) {
+        session.invalidate();
+        return "adminjsps/login";
+    }
 }

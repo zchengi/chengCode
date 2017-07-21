@@ -5,13 +5,13 @@ import java.util.List;
 import com.cheng.order.povo.DingdanPovo;
 
 public interface OrderManageService {
-	List<DingdanPovo> toList();
+    List<DingdanPovo> toList();
 
-	DingdanPovo findByOid(String oid);
+    DingdanPovo findByOid(String oid);
 
-	public List<DingdanPovo> findByStatus(int status);
+    public List<DingdanPovo> findByStatus(int status);
 
-	String deliver(String oid);
+    String deliver(String oid);
 
-	String cancel(String oid);
+    String cancel(String oid);
 }

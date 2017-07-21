@@ -28,126 +28,126 @@ import com.cheng.order.serviceImpl.OrderServiceImpl;
 @Controller
 public class OrderController {
 
-	@Autowired
-	private OrderServiceImpl orderServiceImpl;
+    @Autowired
+    private OrderServiceImpl orderServiceImpl;
 
-	/**
-	 * 提交订单
-	 */
-	@RequestMapping(value = "/dingdan", method = RequestMethod.POST)
-	public String dingdan(String[] ids, myOrder dingdan, Model model) {
+    /**
+     * 提交订单
+     */
+    @RequestMapping(value = "/dingdan", method = RequestMethod.POST)
+    public String dingdan(String[] ids, myOrder dingdan, Model model) {
 
-		myOrder dingdan2 = orderServiceImpl.adddingdan(ids, dingdan);
-		model.addAttribute("dingdan", dingdan2);
-		return "jsps/order/ordersucc";
-	}
+        myOrder dingdan2 = orderServiceImpl.adddingdan(ids, dingdan);
+        model.addAttribute("dingdan", dingdan2);
+        return "jsps/order/ordersucc";
+    }
 
-	/**
-	 * 订单列表页
-	 */
-	@RequestMapping(value = "/getdingdans/{uid}", method = RequestMethod.GET)
-	public String getdingdans(@PathVariable String uid, Model model) {
-		List<DingdanPovo> dingdans = orderServiceImpl.getdingdans(uid);
-		model.addAttribute("dingdans", dingdans);
-		return "jsps/order/list";
-	}
+    /**
+     * 订单列表页
+     */
+    @RequestMapping(value = "/getdingdans/{uid}", method = RequestMethod.GET)
+    public String getdingdans(@PathVariable String uid, Model model) {
+        List<DingdanPovo> dingdans = orderServiceImpl.getdingdans(uid);
+        model.addAttribute("dingdans", dingdans);
+        return "jsps/order/list";
+    }
 
-	/**
-	 * 订单描述页
-	 */
-	@RequestMapping(value = "/getdingdan/{oid}", method = RequestMethod.GET)
-	public String getDingdan(@PathVariable String oid, Model model) {
-		DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
-		model.addAttribute("dingdan", dingdan);
-		return "jsps/order/desc";
-	}
+    /**
+     * 订单描述页
+     */
+    @RequestMapping(value = "/getdingdan/{oid}", method = RequestMethod.GET)
+    public String getDingdan(@PathVariable String oid, Model model) {
+        DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
+        model.addAttribute("dingdan", dingdan);
+        return "jsps/order/desc";
+    }
 
-	/**
-	 * 订单确认
-	 */
-	@RequestMapping(value = "/affirm/{oid}", method = RequestMethod.GET)
-	public String affirmDingdan(@PathVariable String oid, Model model) {
-		orderServiceImpl.affirmDingdan(oid);
+    /**
+     * 订单确认
+     */
+    @RequestMapping(value = "/affirm/{oid}", method = RequestMethod.GET)
+    public String affirmDingdan(@PathVariable String oid, Model model) {
+        orderServiceImpl.affirmDingdan(oid);
 
-		model.addAttribute("code", "success");
-		model.addAttribute("msg", "订单已确认");
-		return "jsps/msg";
-	}
+        model.addAttribute("code", "success");
+        model.addAttribute("msg", "订单已确认");
+        return "jsps/msg";
+    }
 
-	/**
-	 * 订单取消
-	 */
-	@RequestMapping(value = "/cancel/{oid}", method = RequestMethod.GET)
-	public String cancelDingdan(@PathVariable String oid, Model model) {
-		orderServiceImpl.cancelDingdan(oid);
+    /**
+     * 订单取消
+     */
+    @RequestMapping(value = "/cancel/{oid}", method = RequestMethod.GET)
+    public String cancelDingdan(@PathVariable String oid, Model model) {
+        orderServiceImpl.cancelDingdan(oid);
 
-		model.addAttribute("code", "success");
-		model.addAttribute("msg", "订单已取消");
-		return "jsps/msg";
-	}
+        model.addAttribute("code", "success");
+        model.addAttribute("msg", "订单已取消");
+        return "jsps/msg";
+    }
 
-	/**
-	 * 订单将要支付
-	 */
-	@RequestMapping(value = "/payying/{oid}", method = RequestMethod.GET)
-	public String payyingDingdan(@PathVariable String oid, Model model) {
-		DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
-		model.addAttribute("dingdan", dingdan);
-		return "jsps/order/pay";
-	}
+    /**
+     * 订单将要支付
+     */
+    @RequestMapping(value = "/payying/{oid}", method = RequestMethod.GET)
+    public String payyingDingdan(@PathVariable String oid, Model model) {
+        DingdanPovo dingdan = orderServiceImpl.getDingdan(oid);
+        model.addAttribute("dingdan", dingdan);
+        return "jsps/order/pay";
+    }
 
-	/**
-	 * 订单支付
-	 */
-	@RequestMapping(value = "/pay/{oid}", method = RequestMethod.GET)
-	public void payDingdan(@PathVariable String oid, Model model,
-			HttpServletResponse response) {
-		String result = orderServiceImpl.payDingdan(oid);
-		try {
-			response.getWriter().println("<html>" + result + "</html>");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    /**
+     * 订单支付
+     */
+    @RequestMapping(value = "/pay/{oid}", method = RequestMethod.GET)
+    public void payDingdan(@PathVariable String oid, Model model,
+            HttpServletResponse response) {
+        String result = orderServiceImpl.payDingdan(oid);
+        try {
+            response.getWriter().println("<html>" + result + "</html>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	/**
-	 * 订单支付成功跳转
-	 */
-	@RequestMapping(value = "/returnurl", method = RequestMethod.GET)
-	public String returnUrl(Model model, HttpServletRequest request)
-			throws UnsupportedEncodingException, AlipayApiException {
+    /**
+     * 订单支付成功跳转
+     */
+    @RequestMapping(value = "/returnurl", method = RequestMethod.GET)
+    public String returnUrl(Model model, HttpServletRequest request)
+            throws UnsupportedEncodingException, AlipayApiException {
 
-		// 获取支付宝GET过来反馈信息
-		Map<String, String> params = new HashMap<String, String>();
-		Map<String, String[]> requestParams = request.getParameterMap();
-		for (Iterator<String> iter = requestParams.keySet().iterator(); iter
-				.hasNext();) {
-			String name = (String) iter.next();
-			String[] values = (String[]) requestParams.get(name);
-			String valueStr = "";
-			for (int i = 0; i < values.length; i++) {
-				valueStr = (i == values.length - 1) ? valueStr + values[i]
-						: valueStr + values[i] + ",";
-			}
-			// 乱码解决，这段代码在出现乱码时使用
-			try {
-				valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			params.put(name, valueStr);
-		}
-		boolean signVerified = AlipaySignature.rsaCheckV1(params,
-				AlipayConfig.alipay_public_key, AlipayConfig.charset,
-				AlipayConfig.sign_type); // 调用SDK验证签名
-		// ——请在这里编写您的程序（以下代码仅作参考）——
-		if (signVerified) {
-			model.addAttribute("code", "success");
-			model.addAttribute("msg", "支付成功");
-		} else {
-			model.addAttribute("code", "error");
-			model.addAttribute("msg", "支付失败");
-		}
-		return "jsps/msg";
-	}
+        // 获取支付宝GET过来反馈信息
+        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String[]> requestParams = request.getParameterMap();
+        for (Iterator<String> iter = requestParams.keySet().iterator(); iter
+                .hasNext();) {
+            String name = (String) iter.next();
+            String[] values = (String[]) requestParams.get(name);
+            String valueStr = "";
+            for (int i = 0; i < values.length; i++) {
+                valueStr = (i == values.length - 1) ? valueStr + values[i]
+                        : valueStr + values[i] + ",";
+            }
+            // 乱码解决，这段代码在出现乱码时使用
+            try {
+                valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            params.put(name, valueStr);
+        }
+        boolean signVerified = AlipaySignature.rsaCheckV1(params,
+                AlipayConfig.alipay_public_key, AlipayConfig.charset,
+                AlipayConfig.sign_type); // 调用SDK验证签名
+        // ——请在这里编写您的程序（以下代码仅作参考）——
+        if (signVerified) {
+            model.addAttribute("code", "success");
+            model.addAttribute("msg", "支付成功");
+        } else {
+            model.addAttribute("code", "error");
+            model.addAttribute("msg", "支付失败");
+        }
+        return "jsps/msg";
+    }
 }

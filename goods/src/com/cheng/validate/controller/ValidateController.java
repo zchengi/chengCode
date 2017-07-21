@@ -24,50 +24,50 @@ import com.cheng.validate.serviceImpl.ValidateServiceImpl;
 @Controller
 public class ValidateController {
 
-	@Autowired
-	private ValidateServiceImpl validateServiceImpl;
+    @Autowired
+    private ValidateServiceImpl validateServiceImpl;
 
-	/**
-	 * 获取验证码
-	 */
-	@RequestMapping(value = "/getverify", method = RequestMethod.GET)
-	public void getVerify(HttpServletRequest request,
-			HttpServletResponse response) {
-		try {
-			Verify.getVirify(request, response);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    /**
+     * 获取验证码
+     */
+    @RequestMapping(value = "/getverify", method = RequestMethod.GET)
+    public void getVerify(HttpServletRequest request,
+            HttpServletResponse response) {
+        try {
+            Verify.getVirify(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	/**
-	 * 验证用户名
-	 */
-	@RequestMapping(value = "/valiloginname", method = RequestMethod.POST)
-	public void valiLoginName(HttpServletRequest request,
-			HttpServletResponse response, @RequestParam String loginname)
-			throws IOException {
-		response.getWriter()
-				.print(validateServiceImpl.valiLoginName(loginname));
-	}
+    /**
+     * 验证用户名
+     */
+    @RequestMapping(value = "/valiloginname", method = RequestMethod.POST)
+    public void valiLoginName(HttpServletRequest request,
+            HttpServletResponse response, @RequestParam String loginname)
+            throws IOException {
+        response.getWriter()
+                .print(validateServiceImpl.valiLoginName(loginname));
+    }
 
-	/**
-	 * 验证邮箱
-	 */
-	@RequestMapping(value = "/valiemail", method = RequestMethod.POST)
-	public @ResponseBody Boolean valiemail(String email) {
-		return validateServiceImpl.valiemail(email);
+    /**
+     * 验证邮箱
+     */
+    @RequestMapping(value = "/valiemail", method = RequestMethod.POST)
+    public @ResponseBody Boolean valiemail(String email) {
+        return validateServiceImpl.valiemail(email);
 
-	}
+    }
 
-	/**
-	 * 验证验证码
-	 */
-	@RequestMapping(value = "/valiverifycode", method = RequestMethod.POST)
-	public @ResponseBody Boolean valiverifyCode(HttpSession session,
-			String verifyCode) {
-		String vcode = (String) session.getAttribute("vCode");
-		return vcode.equalsIgnoreCase(verifyCode);
-	}
+    /**
+     * 验证验证码
+     */
+    @RequestMapping(value = "/valiverifycode", method = RequestMethod.POST)
+    public @ResponseBody Boolean valiverifyCode(HttpSession session,
+            String verifyCode) {
+        String vcode = (String) session.getAttribute("vCode");
+        return vcode.equalsIgnoreCase(verifyCode);
+    }
 
 }

@@ -7,15 +7,15 @@ import com.cheng.domain.Category;
 
 public interface ClassifiedService {
 
-	List<Categorypojo> getCategory() throws Exception;
+    List<Categorypojo> getCategory() throws Exception;
 
-	String deleteCategory1(String cid);
+    String deleteCategory1(String cid);
 
-	String deleteCategory2(String cid);
+    String deleteCategory2(String cid);
 
-	String add(Category category);
+    String add(Category category);
 
-	Category toEdit(String cid);
+    Category toEdit(String cid);
 
-	String edit(Category category);
+    String edit(Category category);
 }

@@ -12,15 +12,15 @@ import com.cheng.category.service.ICategorService;
 @Service
 public class CategoryServiceImpl implements ICategorService {
 
-	@Autowired
-	private CategoryDao categoryMapperImpl;
+    @Autowired
+    private CategoryDao categoryMapperImpl;
 
-	/**
-	 * 图书列表实现
-	 */
-	@Override
-	public List<Categorypojo> getCategory() throws Exception {
-		return categoryMapperImpl.selectAllcategorys();
-	}
+    /**
+     * 图书列表实现
+     */
+    @Override
+    public List<Categorypojo> getCategory() throws Exception {
+        return categoryMapperImpl.selectAllcategorys();
+    }
 
 }

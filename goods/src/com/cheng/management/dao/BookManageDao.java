@@ -11,73 +11,73 @@ import com.cheng.domain.BookExample;
 
 @Repository
 public class BookManageDao implements BookMapper {
-	
-	@Autowired
-	private BookMapper bookMapper;
 
-	@Override
-	public List<Book> selectByCidForAllBook(String cid) {
-		return this.bookMapper.selectByCidForAllBook(cid);
-	}
+    @Autowired
+    private BookMapper bookMapper;
 
-	@Override
-	public int countByExample(BookExample example) {
-		return this.bookMapper.countByExample(example);
-	}
+    @Override
+    public List<Book> selectByCidForAllBook(String cid) {
+        return this.bookMapper.selectByCidForAllBook(cid);
+    }
 
-	@Override
-	public List<Book> selectForBooks(Book book) {
-		return this.bookMapper.selectForBooks(book);
-	}
+    @Override
+    public int countByExample(BookExample example) {
+        return this.bookMapper.countByExample(example);
+    }
 
-	@Override
-	public int deleteByExample(BookExample example) {
-		return this.bookMapper.deleteByExample(example);
-	}
+    @Override
+    public List<Book> selectForBooks(Book book) {
+        return this.bookMapper.selectForBooks(book);
+    }
 
-	@Override
-	public int deleteByPrimaryKey(String bid) {
-		return this.bookMapper.deleteByPrimaryKey(bid);
-	}
+    @Override
+    public int deleteByExample(BookExample example) {
+        return this.bookMapper.deleteByExample(example);
+    }
 
-	@Override
-	public int insert(Book record) {
-		return this.bookMapper.insert(record);
-	}
+    @Override
+    public int deleteByPrimaryKey(String bid) {
+        return this.bookMapper.deleteByPrimaryKey(bid);
+    }
 
-	@Override
-	public int insertSelective(Book record) {
-		return this.bookMapper.insertSelective(record);
-	}
+    @Override
+    public int insert(Book record) {
+        return this.bookMapper.insert(record);
+    }
 
-	@Override
-	public List<Book> selectByExample(BookExample example) {
-		return this.bookMapper.selectByExample(example);
-	}
+    @Override
+    public int insertSelective(Book record) {
+        return this.bookMapper.insertSelective(record);
+    }
 
-	@Override
-	public Book selectByPrimaryKey(String bid) {
-		return this.bookMapper.selectByPrimaryKey(bid);
-	}
+    @Override
+    public List<Book> selectByExample(BookExample example) {
+        return this.bookMapper.selectByExample(example);
+    }
 
-	@Override
-	public int updateByExampleSelective(Book record, BookExample example) {
-		return this.bookMapper.updateByExampleSelective(record, example);
-	}
+    @Override
+    public Book selectByPrimaryKey(String bid) {
+        return this.bookMapper.selectByPrimaryKey(bid);
+    }
 
-	@Override
-	public int updateByExample(Book record, BookExample example) {
-		return this.bookMapper.updateByExample(record, example);
-	}
+    @Override
+    public int updateByExampleSelective(Book record, BookExample example) {
+        return this.bookMapper.updateByExampleSelective(record, example);
+    }
 
-	@Override
-	public int updateByPrimaryKeySelective(Book record) {
-		return this.bookMapper.updateByPrimaryKeySelective(record);
-	}
+    @Override
+    public int updateByExample(Book record, BookExample example) {
+        return this.bookMapper.updateByExample(record, example);
+    }
 
-	@Override
-	public int updateByPrimaryKey(Book record) {
-		return this.bookMapper.updateByPrimaryKey(record);
-	}
+    @Override
+    public int updateByPrimaryKeySelective(Book record) {
+        return this.bookMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(Book record) {
+        return this.bookMapper.updateByPrimaryKey(record);
+    }
 
 }

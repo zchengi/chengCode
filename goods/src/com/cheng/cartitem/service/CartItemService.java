@@ -7,15 +7,15 @@ import com.cheng.domain.CartItem;
 
 public interface CartItemService {
 
-	List<CartItempovo> getCartIems(String uid);
+    List<CartItempovo> getCartIems(String uid);
 
-	void removeCartitem(String cartitemid);
+    void removeCartitem(String cartitemid);
 
-	void editCartitem(CartItem newcartItem);
+    void editCartitem(CartItem newcartItem);
 
-	List<CartItempovo> addCartitem(CartItem newcartItem, String uid);
+    List<CartItempovo> addCartitem(CartItem newcartItem, String uid);
 
-	void deleteCartitems(String[] ids);
+    void deleteCartitems(String[] ids);
 
-	List<CartItempovo> selectAccounts(String[] ids, String uid);
+    List<CartItempovo> selectAccounts(String[] ids, String uid);
 }

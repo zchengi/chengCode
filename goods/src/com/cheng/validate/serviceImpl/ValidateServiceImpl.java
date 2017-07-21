@@ -12,19 +12,19 @@ import com.cheng.validate.service.ValidateService;
 @Service
 public class ValidateServiceImpl implements ValidateService {
 
-	@Autowired
-	private ValidateDao validateDao;
+    @Autowired
+    private ValidateDao validateDao;
 
-	/**
-	 * 验证用户名是否有重复
-	 * 
-	 * @return 重复返回1 否则返回0
-	 */
-	public int valiLoginName(String loginname) {
-		return validateDao.valiLoginName(loginname);
-	}
+    /**
+     * 验证用户名是否有重复
+     * 
+     * @return 重复返回1 否则返回0
+     */
+    public int valiLoginName(String loginname) {
+        return validateDao.valiLoginName(loginname);
+    }
 
-	public Boolean valiemail(String email) {
-		return validateDao.valiemail(email);
-	}
+    public Boolean valiemail(String email) {
+        return validateDao.valiemail(email);
+    }
 }

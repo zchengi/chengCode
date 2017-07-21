@@ -181,16 +181,20 @@ public class OrderitemExample {
             criteria.add(new Criterion(condition));
         }
 
-        protected void addCriterion(String condition, Object value, String property) {
+        protected void addCriterion(String condition, Object value,
+                String property) {
             if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
+                throw new RuntimeException("Value for " + property
+                        + " cannot be null");
             }
             criteria.add(new Criterion(condition, value));
         }
 
-        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+        protected void addCriterion(String condition, Object value1,
+                Object value2, String property) {
             if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
+                throw new RuntimeException("Between values for " + property
+                        + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
         }
@@ -261,7 +265,8 @@ public class OrderitemExample {
         }
 
         public Criteria andOrderitemidNotBetween(String value1, String value2) {
-            addCriterion("orderItemId not between", value1, value2, "orderitemid");
+            addCriterion("orderItemId not between", value1, value2,
+                    "orderitemid");
             return (Criteria) this;
         }
 
@@ -380,7 +385,8 @@ public class OrderitemExample {
             return (Criteria) this;
         }
 
-        public Criteria andSubtotalNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andSubtotalNotBetween(BigDecimal value1,
+                BigDecimal value2) {
             addCriterion("subtotal not between", value1, value2, "subtotal");
             return (Criteria) this;
         }
@@ -580,7 +586,8 @@ public class OrderitemExample {
             return (Criteria) this;
         }
 
-        public Criteria andCurrpriceNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCurrpriceNotBetween(BigDecimal value1,
+                BigDecimal value2) {
             addCriterion("currPrice not between", value1, value2, "currprice");
             return (Criteria) this;
         }
@@ -817,7 +824,8 @@ public class OrderitemExample {
             this(condition, value, null);
         }
 
-        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+        protected Criterion(String condition, Object value, Object secondValue,
+                String typeHandler) {
             super();
             this.condition = condition;
             this.value = value;

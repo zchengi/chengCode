@@ -9,14 +9,14 @@ import com.cheng.domain.Book;
 
 public interface BookManageService {
 
-	List<Categorypojo> getCategory();
+    List<Categorypojo> getCategory();
 
-	Categorypojo get2category(String cid);
+    Categorypojo get2category(String cid);
 
-	String addBook(Book book, MultipartFile image_w, MultipartFile image_b,
-			String path);
+    String addBook(Book book, MultipartFile image_w, MultipartFile image_b,
+            String path);
 
-	String edit(Book book);
+    String edit(Book book);
 
-	String delete(Book book, String path);
+    String delete(Book book, String path);
 }

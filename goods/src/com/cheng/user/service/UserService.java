@@ -6,12 +6,12 @@ import com.cheng.domain.User;
 import com.cheng.user.vo.UserPwdVo;
 
 public interface UserService {
-	void regUser(User user);
+    void regUser(User user);
 
-	List<String> activation(String activationCode);
+    List<String> activation(String activationCode);
 
-	User login(User user);
+    User login(User user);
 
-	boolean editPwd(UserPwdVo vo, String uid);
+    boolean editPwd(UserPwdVo vo, String uid);
 
 }

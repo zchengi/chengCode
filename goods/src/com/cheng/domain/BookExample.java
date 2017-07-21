@@ -181,16 +181,20 @@ public class BookExample {
             criteria.add(new Criterion(condition));
         }
 
-        protected void addCriterion(String condition, Object value, String property) {
+        protected void addCriterion(String condition, Object value,
+                String property) {
             if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
+                throw new RuntimeException("Value for " + property
+                        + " cannot be null");
             }
             criteria.add(new Criterion(condition, value));
         }
 
-        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+        protected void addCriterion(String condition, Object value1,
+                Object value2, String property) {
             if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
+                throw new RuntimeException("Between values for " + property
+                        + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
         }
@@ -520,7 +524,8 @@ public class BookExample {
             return (Criteria) this;
         }
 
-        public Criteria andCurrpriceNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCurrpriceNotBetween(BigDecimal value1,
+                BigDecimal value2) {
             addCriterion("currPrice not between", value1, value2, "currprice");
             return (Criteria) this;
         }
@@ -580,7 +585,8 @@ public class BookExample {
             return (Criteria) this;
         }
 
-        public Criteria andDiscountNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andDiscountNotBetween(BigDecimal value1,
+                BigDecimal value2) {
             addCriterion("discount not between", value1, value2, "discount");
             return (Criteria) this;
         }
@@ -721,7 +727,8 @@ public class BookExample {
         }
 
         public Criteria andPublishtimeNotBetween(String value1, String value2) {
-            addCriterion("publishtime not between", value1, value2, "publishtime");
+            addCriterion("publishtime not between", value1, value2,
+                    "publishtime");
             return (Criteria) this;
         }
 
@@ -1467,7 +1474,8 @@ public class BookExample {
             this(condition, value, null);
         }
 
-        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+        protected Criterion(String condition, Object value, Object secondValue,
+                String typeHandler) {
             super();
             this.condition = condition;
             this.value = value;

@@ -10,10 +10,10 @@ import com.cheng.domain.Admin;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-	@Autowired
-	private AdminDao adminDao;
+    @Autowired
+    private AdminDao adminDao;
 
-	public Admin login(Admin admin) {
-		return adminDao.selectByNameAndpwdForadmin(admin);
-	}
+    public Admin login(Admin admin) {
+        return adminDao.selectByNameAndpwdForadmin(admin);
+    }
 }
