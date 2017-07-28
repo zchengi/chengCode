@@ -26,18 +26,5 @@ a {
 
 <body>
 	<h1>欢迎进入网上书城系统</h1>
-	<!-- <a href="http://www.baidu.com/" target="_top">
-      <img src="http://localhost:8080/goods/images/a_link.gif" border="0" style="border:1px #DCD8D7 solid;"/>
-    </a>
-    <br/>
-    <a href="http://www.baidu.com/" target="_top">
-      <img src="http://localhost:8080/goods/images/mhzxxls.jpg" border="0"/>
-    </a>
-    <a href="http://www.baidu.com/" target="_top">
-      <img src="http://localhost:8080/goods/images/csdn.jpg" border="0"/>
-    </a>
-    <a href="http://www.baidu.com/" target="_top">
-      <img src="http://localhost:8080/goods/images/20131225111747348.jpg" border="0"/>
-    </a>    -->
 </body>
 </html>
